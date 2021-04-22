@@ -875,15 +875,15 @@ Future<StationModel> getStationData(String stn_id, int basin_id) async {
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final String url = basin_id == 1
-      ? "http://http://tele-maeklong.dwr.go.th/webservice/webservice_mk_Data_json?station_ID=" +
+      ? "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_Data_json?stn_id=" +
           stn_id
       : basin_id == 2
-          ? "http://tele-salawin.dwr.go.th/webservice/webservice_mk_Data_json?station_ID=" +
+          ? "http://tele-salawin.dwr.go.th/webservice/webservice_sl_json_id?station_ID=" +
               stn_id
           : basin_id == 3
-              ? "http://tele-kokkhong.dwr.go.th/webservice/webservice_mk_Data_json?station_ID=" +
+              ? "http://tele-kokkhong.dwr.go.th/webservicewebservice_kk_json_id?station_ID=" +
                   stn_id
-              : "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_Data_json?station_ID=" +
+              : "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_Data_json?stn_id=" +
                   stn_id;
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
@@ -901,14 +901,14 @@ Future<StationModel> getStationData(String stn_id, int basin_id) async {
 Future<DataModelGet> getdata(String stn_id, int basin_id) async {
   //final String url ="http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json?stn_id=" + stn_id;
   final String url = basin_id == 1
-      ? "http://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" + stn_id
+      ? "http://tele-maeklong.dwr.go.th/webservice/getdata?station_ID=" + stn_id
       : basin_id == 2
-          ? "http://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" +
+          ? "http://tele-maeklong.dwr.go.th/webservice/getdata?station_ID=" +
               stn_id
           : basin_id == 3
-              ? "http://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" +
+              ? "http://tele-maeklong.dwr.go.th/webservice/getdata?station_ID=" +
                   stn_id
-              : "http://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" +
+              : "http://tele-maeklong.dwr.go.th/webservice/getdata?station_ID=" +
                   stn_id;
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
