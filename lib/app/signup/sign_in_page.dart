@@ -1,4 +1,5 @@
-import 'package:dwr0001/Application/OverViewPage.dart';
+import 'package:dwr0001/Application/Menu.dart';
+// import 'package:dwr0001/Application/OverViewPage.dart';
 import 'package:dwr0001/app/signup/sign_in_button.dart';
 import 'package:flutter/material.dart';
 
@@ -53,55 +54,11 @@ class SignInPage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => OverViewPage()));
+                            // builder: (context) => OverViewPage()));
+                            builder: (context) => MenuPage()));
                   },
                 ),
               ),
-              // SizedBox(
-              //   height: 7.0,
-              // ),
-              // SizedBox(
-              //   height: 50.0,
-              //   child: RaisedButton(
-              //     child: Text(
-              //       'การพยากรณ์',
-              //       style: TextStyle(
-              //         color: Colors.black87,
-              //       ),
-              //     ),
-              //     shape: RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.all(Radius.circular(10.0))),
-              //     color: Colors.white,
-              //     onPressed: () {
-              //       Navigator.push(
-              //           context,
-              //           MaterialPageRoute(
-              //               builder: (context) => ForecastPage()));
-              //     },
-              //   ),
-              // ),
-
-              //   SizedBox(
-              //     height: 7.0,
-              //   ),
-              //   SizedBox(
-              //     height: 50.0,
-              //     child: RaisedButton(
-              //       child: Text(
-              //         'ข้อมูลโครงการ',
-              //         style: TextStyle(
-              //           color: Colors.black87,
-              //         ),
-              //       ),
-              //       shape: RoundedRectangleBorder(
-              //           borderRadius: BorderRadius.all(Radius.circular(10.0))),
-              //       color: Colors.white,
-              //       onPressed: () {
-              //         Navigator.push(context,
-              //             MaterialPageRoute(builder: (context) => ProjectPage()));
-              //       },
-              //     ),
-              //   ),
             ]),
       ),
     );
