@@ -691,7 +691,7 @@ class MyDisplayClass extends StatelessWidget {
                               numeric: false,
                               onSort: (i, b) {}),
                           DataColumn(
-                              label: Text("วปริมาณน้ำ"),
+                              label: Text("ปริมาณน้ำ"),
                               numeric: false,
                               onSort: (i, b) {})
                         ], rows: <DataRow>[]),
@@ -825,10 +825,10 @@ Future<StationModel> getStation(String stn_id) async {
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    // print('Response status: ${response.statusCode}');
-    // print('Response body: ${response.body}');
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
     final station = jsonDecode(response.body);
-    // print('Response JsonDecode: $station');
+    print('Response JsonDecode: $station');
     return StationModel.fromJson(station);
   } else {
     throw Exception();
@@ -870,21 +870,11 @@ List<StationModel> parseData(String responseBody) {
 
 Future<StationModel> getStationData(String stn_id, int basin_id) async {
   //final String url ="http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json?stn_id=" + stn_id;
-  //final String url =
-
+  final String url =
+      "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_Data_json?stn_id=" +
+          stn_id;
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
-  final String url = basin_id == 1
-      ? "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_Data_json?stn_id=" +
-          stn_id
-      : basin_id == 2
-          ? "http://tele-salawin.dwr.go.th/webservice/webservice_sl_json_id?station_ID=" +
-              stn_id
-          : basin_id == 3
-              ? "http://tele-kokkhong.dwr.go.th/webservicewebservice_kk_json_id?station_ID=" +
-                  stn_id
-              : "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_Data_json?stn_id=" +
-                  stn_id;
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
     print('Response status: ${response.statusCode}');
@@ -897,18 +887,30 @@ Future<StationModel> getStationData(String stn_id, int basin_id) async {
   }
 }
 
+// final response = await http.get(Uri.parse(url));
+//   if (response.statusCode == 200) {
+//     print('Response status: ${response.statusCode}');
+//     print('Response body: ${response.body}');
+//     final station = jsonDecode(response.body);
+//     print('Response JsonDecode: $station');
+//     return StationModel.fromJson(station);
+//   } else {
+//     throw Exception();
+//   }
+// }
+
 // ignore: non_constant_identifier_names
 Future<DataModelGet> getdata(String stn_id, int basin_id) async {
   //final String url ="http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json?stn_id=" + stn_id;
   final String url = basin_id == 1
-      ? "http://tele-maeklong.dwr.go.th/webservice/getdata?station_ID=" + stn_id
+      ? "http://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" + stn_id
       : basin_id == 2
-          ? "http://tele-maeklong.dwr.go.th/webservice/getdata?station_ID=" +
+          ? "http://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" +
               stn_id
           : basin_id == 3
-              ? "http://tele-maeklong.dwr.go.th/webservice/getdata?station_ID=" +
+              ? "http://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" +
                   stn_id
-              : "http://tele-maeklong.dwr.go.th/webservice/getdata?station_ID=" +
+              : "http://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" +
                   stn_id;
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
@@ -924,3 +926,22 @@ Future<DataModelGet> getdata(String stn_id, int basin_id) async {
     throw Exception();
   }
 }
+
+// {
+//   "STN_ID": "TC020805",
+//   "STN_Name": "สะพานบ้านป่าข่า",
+//   "CURR_Acc_Rain_15_M": "0.0",
+//   "CURR_Acc_Rain_30_M": "0.0",
+//   "CURR_Acc_Rain_60_M": "0.0",
+//   "CURR_Acc_Rain_1_D": "0.0",
+//   "CURR_Acc_Rain_12_H": "0.0",
+//   "CURR_Water_D_Level_MSL": "350.79",
+//   "CURR_Water_U_Level_MSL": "0.00",
+//   "CURR_FLOW": "0.00",
+//   "RF": "RF",
+//   "WL": "WL",
+//   "WF": "WF",
+//   "CURR_CCTV": "",
+//   "CURR_STATUS": "0",
+//   "LAST_UPDATE": "2021-04-23 04:55:00"
+// }

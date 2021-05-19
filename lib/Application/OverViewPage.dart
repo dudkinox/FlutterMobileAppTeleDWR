@@ -24,7 +24,11 @@ class MyDisplayClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+<<<<<<< HEAD
         title: Text('TELEDWR-ข้อมูลตรวจวัด'),
+=======
+        title: Text('TELEDWR-ข้อมูลการวัด'),
+>>>>>>> parent of 168f295 (Menu)
         elevation: 10.0,
       ),
       body: Center(
