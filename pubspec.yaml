@@ -62,10 +62,17 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/images/
     - images/loading1.gif
     - images/bg.jpg
     - images/bg2.png
     - images/ic_launcher.png
+    - assets/images/bg.png
+    - assets/images/bg2.png
+    - assets/images/bell.png
+    - assets/images/menu.png
+    - assets/images/search.png
+    - assets/images/home.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -101,5 +108,7 @@ flutter:
             style: italic
           - asset: assets/fonts/Kanit-Bold.ttf
             weight: 700
-
+    - family: Righteous
+      fonts:
+        - asset: assets/fonts/Righteous-Regular.ttf
 

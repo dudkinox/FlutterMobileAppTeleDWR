@@ -8,7 +8,6 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         title: Text('TELEDWR-หน้าหลัก'),
         elevation: 10.0,
       ),
@@ -21,7 +20,10 @@ class SignInPage extends StatelessWidget {
               Text(
                 'ระบบติดตามสถานการณ์น้ำทางไกลอัตโนมัติ',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontFamily: 'Kanit',fontSize: 20.0, fontWeight: FontWeight.w700),
+                style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w700),
               ),
               // Text(
               //   'ลุ่มน้ำแม่กลอง',
@@ -31,10 +33,10 @@ class SignInPage extends StatelessWidget {
               SizedBox(
                 height: 5.0,
               ),
-              FadeInImage.assetNetwork(
-                placeholder: 'images/loading2.gif',
-                image: ('http://tele-maeklong.dwr.go.th/image/Logodwr_r.png'),
-              ),
+              // FadeInImage.assetNetwork(
+              //   // placeholder: 'images/loading2.gif',
+              //   image: ('http://tele-maeklong.dwr.go.th/image/Logodwr_r.png'),
+              // ),
               SizedBox(
                 height: 7.0,
               ),
@@ -45,9 +47,10 @@ class SignInPage extends StatelessWidget {
                   child: Text(
                     'เข้าสู่ระบบ',
                     style: TextStyle(
-                      color: Colors.black87,
-                        fontFamily: 'Kanit',fontSize: 16.0, fontWeight: FontWeight.w400
-                    ),
+                        color: Colors.black87,
+                        fontFamily: 'Kanit',
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w400),
                   ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0))),

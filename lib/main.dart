@@ -1,6 +1,5 @@
+import 'package:dwr0001/screen/welcome/welcome.dart';
 import 'package:flutter/material.dart';
-
-import 'app/signup/sign_in_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +11,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'mytitle',
         theme: ThemeData(primarySwatch: Colors.cyan),
-        home: SignInPage());
+        home: Welcome());
   }
 }
