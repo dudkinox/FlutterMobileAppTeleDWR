@@ -32,9 +32,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.1
   font_awesome_flutter: ^9.0.0
-
+  fluttertoast: ^8.0.7
   bezier_chart: ^1.0.16
   flutter_glow: ^0.2.0
+
 
 
 dev_dependencies:
@@ -69,8 +70,6 @@ flutter:
     - images/ic_launcher.png
     - assets/images/bg.png
     - assets/images/bg2.png
-    - assets/images/bell.png
-    - assets/images/menu.png
     - assets/images/search.png
     - assets/images/home.png
 

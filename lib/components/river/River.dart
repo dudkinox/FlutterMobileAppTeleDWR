@@ -2,6 +2,7 @@ import 'package:dwr0001/Application/OverViewPage.dart';
 import 'package:dwr0001/components/body.dart';
 import 'package:dwr0001/components/eventmenu/MainBox.dart';
 import 'package:flutter/material.dart';
+import '../../constants.dart';
 
 class River extends StatelessWidget {
   @override
@@ -13,22 +14,19 @@ class River extends StatelessWidget {
         length: 2,
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.lightBlue[50],
+              backgroundColor: titlebarColor,
               title: Text('Dashboard',
                   style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
-                      fontWeight: FontWeight.bold)),
-              leading: IconButton(
-                icon: Image.asset('assets/images/menu.png'),
-                onPressed: () {},
-              ),
+                      fontFamily: 'Righteous',
+                      decoration: TextDecoration.none)),
               actions: <Widget>[
                 IconButton(
-                    icon: Image.asset('assets/images/bell.png'),
-                    onPressed: () {}),
-                IconButton(
-                    icon: Image.asset('assets/images/search.png'),
+                    icon: Image.asset(
+                      'assets/images/search.png',
+                      color: Colors.black,
+                    ),
                     onPressed: () {}),
               ],
               centerTitle: true,
@@ -36,15 +34,17 @@ class River extends StatelessWidget {
                 Tab(
                     child: Text('แผนที่',
                         style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                        ))),
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'Righteous',
+                            decoration: TextDecoration.none))),
                 Tab(
                     child: Text('หน้ากิจกรรม',
                         style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                        ))),
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'Righteous',
+                            decoration: TextDecoration.none))),
               ]),
             ),
             body: TabBarView(
@@ -64,8 +64,8 @@ class ListRiver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      body: Container(
+        color: backgroundmainColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -145,7 +145,7 @@ class ListRiver extends StatelessWidget {
               flex: 1,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.lightBlue[50],
+                  color: titlebarColor,
                 ),
                 height: 110,
                 width: 450,
