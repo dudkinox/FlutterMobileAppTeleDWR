@@ -17,61 +17,62 @@ class _MainbodyState extends State<Mainbody> {
     return MaterialApp(
       home: DefaultTabController(
         length: 2,
-        child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: titlebarColor,
-              title: Text(
-                'Dashboard',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Righteous',
-                  color: Colors.black,
+        child: Container(
+          child: Scaffold(
+              appBar: AppBar(
+                title: Text(
+                  'Dashboard',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Righteous',
+                    color: Colors.black,
+                  ),
                 ),
-              ),
-              actions: <Widget>[
-                IconButton(
-                    icon: Image.asset(
-                      'assets/images/search.png',
-                      color: Colors.black,
-                    ),
-                    onPressed: () {}),
-              ],
-              centerTitle: true,
-              bottom: TabBar(
-                  indicatorColor: Colors.lightBlueAccent,
-                  indicatorWeight: 3.5,
-                  indicatorPadding: EdgeInsets.only(left: 40, right: 40),
-                  tabs: [
-                    Tab(
-                      child: Text(
-                        'แผนที่',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontFamily: 'Righteous',
+                actions: <Widget>[
+                  IconButton(
+                      icon: Image.asset(
+                        'assets/images/search.png',
+                        color: Colors.black,
+                      ),
+                      onPressed: () {}),
+                ],
+                centerTitle: true,
+                bottom: TabBar(
+                    indicatorColor: Colors.lightBlueAccent,
+                    indicatorWeight: 3.5,
+                    indicatorPadding: EdgeInsets.only(left: 40, right: 40),
+                    tabs: [
+                      Tab(
+                        child: Text(
+                          'แผนที่',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'Righteous',
+                          ),
                         ),
                       ),
-                    ),
-                    Tab(
-                        child: Text('หน้ากิจกรรม',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                              fontFamily: 'Righteous',
-                            ))),
-                  ]),
-            ),
-            body: WillPopScope(
-              onWillPop: onWillPop,
-              child: TabBarView(
-                children: [
-                  Center(
-                    child: Text('TEST'),
-                  ),
-                  EventPage(),
-                ],
+                      Tab(
+                          child: Text('หน้ากิจกรรม',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontFamily: 'Righteous',
+                              ))),
+                    ]),
               ),
-            )),
+              body: WillPopScope(
+                onWillPop: onWillPop,
+                child: TabBarView(
+                  children: [
+                    Center(
+                      child: Text('TEST'),
+                    ),
+                    EventPage(),
+                  ],
+                ),
+              )),
+        ),
       ),
     );
   }

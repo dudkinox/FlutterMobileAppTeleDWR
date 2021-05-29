@@ -30,22 +30,26 @@ class River extends StatelessWidget {
                     onPressed: () {}),
               ],
               centerTitle: true,
-              bottom: TabBar(tabs: [
-                Tab(
-                    child: Text('แผนที่',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'Righteous',
-                            decoration: TextDecoration.none))),
-                Tab(
-                    child: Text('หน้ากิจกรรม',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'Righteous',
-                            decoration: TextDecoration.none))),
-              ]),
+              bottom: TabBar(
+                  indicatorColor: Colors.lightBlueAccent,
+                  indicatorWeight: 3.5,
+                  indicatorPadding: EdgeInsets.only(left: 40, right: 40),
+                  tabs: [
+                    Tab(
+                        child: Text('แผนที่',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontFamily: 'Righteous',
+                                decoration: TextDecoration.none))),
+                    Tab(
+                        child: Text('หน้ากิจกรรม',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontFamily: 'Righteous',
+                                decoration: TextDecoration.none))),
+                  ]),
             ),
             body: TabBarView(
               children: [

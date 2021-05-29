@@ -13,93 +13,95 @@ class EventPage extends StatelessWidget {
       height: size.height,
       width: double.infinity,
       child: Scaffold(
-          backgroundColor: backgroundmainColor,
           body: Column(
-            children: [
-              SizedBox(height: 20),
-              Mainbox(
-                height: 150,
-                width: 377,
-                title: "หมวดหมู่ลุ่มแม่น้ำ",
-                color: Colors.green,
-                press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => River()),
-                  );
-                },
-              ),
-              SizedBox(height: 12),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          SizedBox(height: 20),
+          Mainbox(
+            height: 150,
+            width: 377,
+            title: "หมวดหมู่ลุ่มแม่น้ำ",
+            color: Colors.green,
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => River()),
+              );
+            },
+          ),
+          SizedBox(height: 12),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(width: 8),
+                Expanded(
+                    child: Column(
                   children: [
-                    SizedBox(width: 8),
-                    Expanded(
-                        child: Column(
-                      children: [
-                        Mainbox(
-                          title: "ภาพ\nCCTV",
-                          color: Colors.green,
-                          height: 130,
-                          width: 190,
-                          press: () {},
-                        ),
-                        SizedBox(height: 6),
-                        Mainbox(
-                          title: "เข้าสู่\nเว็บไซต์",
-                          color: Colors.green,
-                          height: 180,
-                          width: 190,
-                          press: () {},
-                        ),
-                      ],
-                    )),
-                    Expanded(
-                        child: Column(
-                      children: [
-                        Mainbox(
-                          title: "กราฟ",
-                          color: Colors.green,
-                          height: 180,
-                          width: 175,
-                          press: () {},
-                        ),
-                        SizedBox(height: 6),
-                        Mainbox(
-                          title: "ติดต่อเรา",
-                          color: Colors.green,
-                          height: 130,
-                          width: 175,
-                          press: () {},
-                        ),
-                      ],
-                    ))
+                    Mainbox(
+                      title: "ภาพ\nCCTV",
+                      color: Colors.green,
+                      height: 130,
+                      width: 190,
+                      press: () {},
+                    ),
+                    SizedBox(height: 6),
+                    Mainbox(
+                      title: "เข้าสู่\nเว็บไซต์",
+                      color: Colors.green,
+                      height: 180,
+                      width: 190,
+                      press: () {},
+                    ),
                   ],
+                )),
+                Expanded(
+                    child: Column(
+                  children: [
+                    Mainbox(
+                      title: "กราฟ",
+                      color: Colors.green,
+                      height: 180,
+                      width: 175,
+                      press: () {},
+                    ),
+                    SizedBox(height: 6),
+                    Mainbox(
+                      title: "ติดต่อเรา",
+                      color: Colors.green,
+                      height: 130,
+                      width: 175,
+                      press: () {},
+                    ),
+                  ],
+                ))
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+          Expanded(
+            flex: 1,
+            child: Container(
+              height: 127,
+              width: 450,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: ExactAssetImage('assets/images/wave.png'),
+                  fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(height: 10),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: titlebarColor,
+              child: IconButton(
+                  icon: Image.asset(
+                    'assets/images/home.png',
                   ),
-                  height: 127,
-                  width: 450,
-                  child: IconButton(
-                      icon: Image.asset(
-                        'assets/images/home.png',
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => Mainbody()),
-                        );
-                      }),
-                ),
-              ),
-            ],
-          )),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => Mainbody()),
+                    );
+                  }),
+            ),
+          ),
+        ],
+      )),
     );
   }
 }

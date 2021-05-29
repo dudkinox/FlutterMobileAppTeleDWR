@@ -14,78 +14,92 @@ class _WelcomeState extends State<Welcome> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: WillPopScope(
-          onWillPop: onWillPop,
-          child: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    alignment: Alignment(0, 3.3),
-                    image: AssetImage('assets/images/bg2.png'),
-                    fit: BoxFit.fitWidth),
-                gradient: LinearGradient(
-                  colors: [Colors.white, Colors.blue.shade700],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                )),
-            height: size.height,
-            width: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(
-                  "assets/images/logo.png",
-                  height: 246,
-                  width: 212,
+        onWillPop: onWillPop,
+        child: Container(
+          height: size.height,
+          width: double.infinity,
+          child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              Positioned(
+                bottom: -255,
+                left: 20,
+                child: Image.asset(
+                  'assets/images/bg.png',
+                  fit: BoxFit.cover,
+                  width: size.width * 1.1,
                 ),
-                Text(
-                  "TeleDWR",
-                  style: TextStyle(
-                      shadows: [
-                        Shadow(
-                          blurRadius: 4.0,
-                          color: Colors.black87,
-                          offset: Offset(2.0, 2.0),
-                        ),
-                      ],
-                      fontSize: 60,
-                      color: Colors.indigo[400],
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Righteous',
-                      decoration: TextDecoration.none),
+              ),
+              Positioned(
+                bottom: -260,
+                right: -10,
+                child: Image.asset(
+                  'assets/images/bg2.png',
+                  fit: BoxFit.cover,
+                  width: size.width * 1.1,
                 ),
-                SizedBox(height: 10),
-                Text(
-                  "ระบบติดตามสถานะการณ์น้ำทางไกลอัตโนมัติ",
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                      fontFamily: 'Kanit',
-                      decoration: TextDecoration.none),
-                ),
-                SizedBox(height: 170),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => Mainbody()));
-                  },
-                  child: Text(
-                    "Start",
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    "assets/images/logo.png",
+                    height: 246,
+                    width: 212,
+                  ),
+                  Text(
+                    "TeleDWR",
                     style: TextStyle(
                         shadows: [
                           Shadow(
-                            blurRadius: 10.0,
+                            blurRadius: 4.0,
                             color: Colors.black87,
-                            offset: Offset(2.0, 4.0),
+                            offset: Offset(2.0, 2.0),
                           ),
                         ],
-                        fontSize: 38,
-                        color: Colors.white,
+                        fontSize: 60,
+                        color: Colors.indigo[400],
+                        fontWeight: FontWeight.bold,
                         fontFamily: 'Righteous',
-                        fontWeight: FontWeight.bold),
+                        decoration: TextDecoration.none),
                   ),
-                ),
-              ],
-            ),
-          )),
+                  SizedBox(height: 10),
+                  Text(
+                    "ระบบติดตามสถานะการณ์น้ำทางไกลอัตโนมัติ",
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                        decoration: TextDecoration.none),
+                  ),
+                  SizedBox(height: 170),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => Mainbody()));
+                    },
+                    child: Text(
+                      "Start",
+                      style: TextStyle(
+                          shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black87,
+                              offset: Offset(2.0, 4.0),
+                            ),
+                          ],
+                          fontSize: 38,
+                          color: Colors.white,
+                          fontFamily: 'Righteous',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 

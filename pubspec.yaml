@@ -68,10 +68,12 @@ flutter:
     - images/bg.jpg
     - images/bg2.png
     - images/ic_launcher.png
+    - assets/images/beach.png
     - assets/images/bg.png
     - assets/images/bg2.png
     - assets/images/search.png
     - assets/images/home.png
+    - assets/images/wave.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
