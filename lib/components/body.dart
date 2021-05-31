@@ -53,6 +53,7 @@ class _MainbodyState extends State<Mainbody> {
                     indicatorColor: Colors.lightBlueAccent,
                     indicatorWeight: 3.5,
                     indicatorPadding: EdgeInsets.only(left: 40, right: 40),
+                    
                     tabs: [
                       Tab(
                         child: Text(

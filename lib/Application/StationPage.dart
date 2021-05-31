@@ -1033,12 +1033,12 @@ class MyDisplayClass extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        // child: FadeInImage.assetNetwork(
-                        //   placeholder: 'image/loading1.gif',
-                        //   image: ('http://tele-maeklong.dwr.go.th/image/' +
-                        //       stnId +
-                        //       '/CCTV_image/Overview_1.jpg'),
-                        // ),
+                        child: FadeInImage.assetNetwork(
+                          placeholder: 'image/loading1.gif',
+                          image: ('http://tele-maeklong.dwr.go.th/image/' +
+                              stnId +
+                              '/CCTV_image/Overview_1.jpg'),
+                        ),
                       ),
                     ),
                   ),
@@ -1051,12 +1051,12 @@ class MyDisplayClass extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        // child: FadeInImage.assetNetwork(
-                        //   placeholder: 'image/loading1.gif',
-                        //   image: ('http://tele-maeklong.dwr.go.th/image/' +
-                        //       stnId +
-                        //       '/CCTV_image/Staff_1.jpg'),
-                        // ),
+                        child: FadeInImage.assetNetwork(
+                          placeholder: 'image/loading1.gif',
+                          image: ('http://tele-maeklong.dwr.go.th/image/' +
+                              stnId +
+                              '/CCTV_image/Staff_1.jpg'),
+                        ),
                       ),
                     ),
                   )

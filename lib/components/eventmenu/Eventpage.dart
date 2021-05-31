@@ -29,9 +29,17 @@ class EventPage extends StatelessWidget {
                         image: AssetImage('assets/images/river.png'),
                         fit: BoxFit.cover,
                         colorFilter: ColorFilter.mode(
-                            backgroundmenu.withOpacity(0.54),
+                            backgroundmenu.withOpacity(0.45),
                             BlendMode.dstATop)),
                     color: backgroundmenu,
+                    boxShadow: [
+                      BoxShadow(
+                        color: backgroundmenu.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 2,
+                        offset: Offset(0, 2), // changes position of shadow
+                      ),
+                    ],
                   ),
                   child: Center(
                     child: Text(

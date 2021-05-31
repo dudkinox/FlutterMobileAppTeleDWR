@@ -64,10 +64,10 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
-    - images/loading1.gif
     - images/bg.jpg
     - images/bg2.png
     - images/ic_launcher.png
+    - assets/images/loading1.gif
     - assets/images/beach.png
     - assets/images/bg.png
     - assets/images/bg2.png
