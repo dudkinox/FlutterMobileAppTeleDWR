@@ -16,7 +16,7 @@ class _MainbodyState extends State<Mainbody> {
     Size size = MediaQuery.of(context).size;
     return MaterialApp(
       home: DefaultTabController(
-        length: 2,
+        length: 1,
         child: Container(
           child: Scaffold(
               appBar: AppBar(
@@ -56,16 +56,6 @@ class _MainbodyState extends State<Mainbody> {
                     
                     tabs: [
                       Tab(
-                        child: Text(
-                          'แผนที่',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'Righteous',
-                          ),
-                        ),
-                      ),
-                      Tab(
                           child: Text('หน้ากิจกรรม',
                               style: TextStyle(
                                 fontSize: 20,
@@ -78,9 +68,6 @@ class _MainbodyState extends State<Mainbody> {
                 onWillPop: onWillPop,
                 child: TabBarView(
                   children: [
-                    Center(
-                      child: Text('TEST'),
-                    ),
                     EventPage(),
                   ],
                 ),

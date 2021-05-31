@@ -11,16 +11,29 @@ class River extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return MaterialApp(
       home: DefaultTabController(
-        length: 2,
+        length: 1,
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: titlebarColor,
-              title: Text('Dashboard',
+              flexibleSpace: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/waveup.png"),
+                        fit: BoxFit.fill),
+                    gradient: LinearGradient(
+                      colors: [waveup1, waveup2],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                ),
+              title: Text(
+                  'Dashboard',
                   style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontFamily: 'Righteous',
-                      decoration: TextDecoration.none)),
+                    fontSize: 40,
+                    fontFamily: 'Righteous',
+                    color: Colors.black,
+                  ),
+                ),
               actions: <Widget>[
                 IconButton(
                     icon: Image.asset(
@@ -36,13 +49,6 @@ class River extends StatelessWidget {
                   indicatorPadding: EdgeInsets.only(left: 40, right: 40),
                   tabs: [
                     Tab(
-                        child: Text('แผนที่',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontFamily: 'Righteous',
-                                decoration: TextDecoration.none))),
-                    Tab(
                         child: Text('หน้ากิจกรรม',
                             style: TextStyle(
                                 fontSize: 20,
@@ -53,9 +59,6 @@ class River extends StatelessWidget {
             ),
             body: TabBarView(
               children: [
-                Center(
-                  child: Text('55555'),
-                ),
                 ListRiver(),
               ],
             )),
@@ -149,8 +152,15 @@ class ListRiver extends StatelessWidget {
               flex: 1,
               child: Container(
                 decoration: BoxDecoration(
-                  color: titlebarColor,
-                ),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/wavedown.png"),
+                        fit: BoxFit.fill),
+                    gradient: LinearGradient(
+                      colors: [waveup2, waveup1],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
                 height: 110,
                 width: 450,
                 child: IconButton(
