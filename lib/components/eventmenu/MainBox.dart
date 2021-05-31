@@ -24,25 +24,24 @@ class Mainbox extends StatelessWidget {
       height: height,
       width: width,
       child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18), // <-- Radius
-            ),
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18), // <-- Radius
           ),
-          onPressed: press,
-          child: Text(
-            title,
-            style: TextStyle(shadows: [
-              Shadow(
-                blurRadius: 5.0,
-                color: Colors.black87,
-                offset: Offset(2.0, 4.0),
-              ),
-            ], fontSize: 38, color: Colors.white, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          )),
+        ),
+        onPressed: press,
+        child: Text(
+          title,
+          style: TextStyle(shadows: [
+            Shadow(
+              blurRadius: 5.0,
+              color: Colors.black87,
+              offset: Offset(2.0, 4.0),
+            ),
+          ], fontSize: 38, color: Colors.white, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }
-
-class required {}

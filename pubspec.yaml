@@ -73,7 +73,14 @@ flutter:
     - assets/images/bg2.png
     - assets/images/search.png
     - assets/images/home.png
-    - assets/images/wave.png
+    - assets/images/waveup.png
+    - assets/images/wavedown.png
+    - assets/images/wavetab.png
+    - assets/images/river.png
+    - assets/images/cctv.png
+    - assets/images/lineriver.png
+    - assets/images/web.png
+    - assets/images/contact.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

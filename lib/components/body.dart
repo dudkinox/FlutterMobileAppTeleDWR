@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'eventmenu/Eventpage.dart';
 import '../constants.dart';
+import 'eventmenu/Eventpage.dart';
 
 class Mainbody extends StatefulWidget {
   @override
@@ -20,10 +20,22 @@ class _MainbodyState extends State<Mainbody> {
         child: Container(
           child: Scaffold(
               appBar: AppBar(
+                flexibleSpace: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/waveup.png"),
+                        fit: BoxFit.fill),
+                    gradient: LinearGradient(
+                      colors: [waveup1, waveup2],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                ),
                 title: Text(
                   'Dashboard',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 40,
                     fontFamily: 'Righteous',
                     color: Colors.black,
                   ),
