@@ -1014,6 +1014,7 @@ class MyDisplayClass extends StatelessWidget {
             )),
             RefreshIndicator(
               onRefresh: () {
+                imageCache.clear();
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) {
                       var stationPage = StationPage(stn_id: stnId);
