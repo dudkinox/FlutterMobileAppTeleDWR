@@ -3,6 +3,7 @@ import 'package:bezier_chart/bezier_chart.dart';
 import 'package:dwr0001/Application/OverViewPage.dart';
 import 'package:dwr0001/Models/station_model.dart';
 import 'package:dwr0001/components/body.dart';
+import 'package:dwr0001/components/river/River.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -132,9 +133,10 @@ class MyDisplayClass extends StatelessWidget {
                           CURR_FLOW_ = station.CURR_FLOW;
                         }
 
-                        ////print('Response JsonDecode: $station');
-                        //return Text(station.length.toString());
-                        _title = "สถานี : " + station.STN_Name;
+                        print('Response JsonDecode: $station');
+
+                        // return Text(station.length.toString());
+                        _title = "สถานี55 : " + station.STN_Name;
 
                         return (SingleChildScrollView(
                             scrollDirection: Axis.vertical,
@@ -737,7 +739,7 @@ class MyDisplayClass extends StatelessWidget {
                                   ),
                                 ])));
                       } else if (snapshot.hasError) {
-                        //print('snapshot.error: ${snapshot.error.toString()}');
+                        print('snapshot.error: ${snapshot.error.toString()}');
                         return Text(snapshot.error.toString());
                       }
                       return CircularProgressIndicator();
@@ -752,7 +754,7 @@ class MyDisplayClass extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         final List<DataModelGet> data = snapshot.data;
-                        // print(data);
+                        print(data);
                         return SingleChildScrollView(
                           scrollDirection: Axis.vertical,
                           child: DataTable(
@@ -875,7 +877,7 @@ class MyDisplayClass extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   final List<DataModelGet> data = snapshot.data;
-                  // print(data);
+                  print(data);
                   return SingleChildScrollView(
                       child: Padding(
                     padding: EdgeInsets.all(16.0),
@@ -1011,7 +1013,10 @@ class MyDisplayClass extends StatelessWidget {
               },
             )),
             RefreshIndicator(
-              onRefresh: _handleRefresh,
+              onRefresh: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => River()));
+              },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListView(children: <Widget>[
@@ -1069,14 +1074,15 @@ class MyDisplayClass extends StatelessWidget {
 
 Future<Null> _handleRefresh() {
   BuildContext context;
-  // Navigator.pushReplacement(
-  //   context, PageRouteBuilder(pageBuilder: (a,b,c) =>MyDisplayClass(0),transitionDuration: Duration(seconds: 0)));
-    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => Mainbody()),
-                    );
-
+  Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+          pageBuilder: (a, b, c) => MyDisplayClass(0),
+          transitionDuration: Duration(seconds: 0)));
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(builder: (context) => Mainbody()),
+  );
 }
-
 
 Future<StationModel> getStation(String stn_id) async {
   final String url =
@@ -1087,10 +1093,10 @@ Future<StationModel> getStation(String stn_id) async {
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    // print('Response status: ${response.statusCode}');
-    // print('Response body: ${response.body}');
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
     final station = jsonDecode(response.body);
-    // print('Response JsonDecode: $station');
+    print('Response JsonDecode: $station');
     return StationModel.fromJson(station);
   } else {
     throw Exception();
@@ -1110,8 +1116,8 @@ Future<List<StationModel>> getStationList() async {
       "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    // print('Response status: ${response.statusCode}');
-    // print('Response body: ${response.body}');
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
 
     return parseStation(response.body);
   } else {
@@ -1120,7 +1126,7 @@ Future<List<StationModel>> getStationList() async {
 }
 
 loadData() async {
-  // print("LoadData");
+  print("LoadData");
 }
 
 List<StationModel> parseData(String responseBody) {
@@ -1139,10 +1145,10 @@ Future<StationModel> getStationData(String stn_id) async {
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    // print('Response status: ${response.statusCode}');
-    // print('Response body: ${response.body}');
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
     final station = jsonDecode(response.body);
-    // print('Response JsonDecode: $station');
+    print('Response JsonDecode: $station');
     return StationModel.fromJson(station);
   } else {
     throw Exception();
@@ -1164,8 +1170,8 @@ Future<List<DataModelGet>> getStationData24H(String stn_id) async {
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    // print('Response status: ${response.statusCode}');
-    //print('Response body: ${response.body}');
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
     return parseData_(response.body);
   } else {
     throw Exception();
