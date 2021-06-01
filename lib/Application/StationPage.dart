@@ -1015,7 +1015,10 @@ class MyDisplayClass extends StatelessWidget {
             RefreshIndicator(
               onRefresh: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => River()));
+                    context, MaterialPageRoute(builder: (context) {
+                      var stationPage = StationPage(stn_id: stnId);
+                      return stationPage;
+                    }));
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -1072,35 +1075,27 @@ class MyDisplayClass extends StatelessWidget {
   }
 }
 
-Future<Null> _handleRefresh() {
-  BuildContext context;
-  Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-          pageBuilder: (a, b, c) => MyDisplayClass(0),
-          transitionDuration: Duration(seconds: 0)));
-  Navigator.of(context).pushReplacement(
-    MaterialPageRoute(builder: (context) => Mainbody()),
-  );
-}
 
 Future<StationModel> getStation(String stn_id) async {
   final String url =
       "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json_id?stn_id=" +
           stn_id;
+
   //final String url = "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
-  final response = await http.get(Uri.parse(url));
+    final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
-    final station = jsonDecode(response.body);
-    print('Response JsonDecode: $station');
-    return StationModel.fromJson(station);
-  } else {
-    throw Exception();
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      final station = jsonDecode(response.body);
+      print('Response JsonDecode: $station');
+      return StationModel.fromJson(station);
+    } else {
+      print(response.statusCode.toString());
+      throw Exception('Failed load data with status code ${response.statusCode}');
   }
+  
 }
 
 List<StationModel> parseStation(String responseBody) {
