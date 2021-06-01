@@ -1,6 +1,5 @@
 import 'package:dwr0001/Application/OverViewPage.dart';
 import 'package:dwr0001/components/body.dart';
-import 'package:dwr0001/components/eventmenu/MainBox.dart';
 import 'package:flutter/material.dart';
 import '../../constants.dart';
 
@@ -15,25 +14,25 @@ class River extends StatelessWidget {
         child: Scaffold(
             appBar: AppBar(
               flexibleSpace: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/waveup.png"),
-                        fit: BoxFit.fill),
-                    gradient: LinearGradient(
-                      colors: [waveup1, waveup2],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/waveup.png"),
+                      fit: BoxFit.fill),
+                  gradient: LinearGradient(
+                    colors: [waveup1, waveup2],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                   ),
                 ),
+              ),
               title: Text(
-                  'Dashboard',
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontFamily: 'Righteous',
-                    color: Colors.black,
-                  ),
+                'Dashboard',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Righteous',
+                  color: Colors.black,
                 ),
+              ),
               actions: <Widget>[
                 IconButton(
                     icon: Image.asset(
@@ -70,6 +69,7 @@ class River extends StatelessWidget {
 class ListRiver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         color: backgroundmainColor,
@@ -104,13 +104,49 @@ class ListRiver extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Mainbox(
-                  title: "ลุ่มน้ำแม่กลอง",
-                  color: Colors.white,
-                  height: 135,
-                  width: 370,
-                  font: 30,
-                  press: () {
+                GestureDetector(
+                  child: Container(
+                    height: 125,
+                    width: 360,
+                    margin: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 0.6),
+                      borderRadius: BorderRadius.circular(18),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/river1.png'),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                              backgroundmenu.withOpacity(0.45),
+                              BlendMode.dstATop)),
+                      color: backgroundmenu,
+                      boxShadow: [
+                        BoxShadow(
+                          color: backgroundmenu.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          offset: Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        "ลุ่มน้ำแม่กลอง",
+                        style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                blurRadius: 5.0,
+                                color: Colors.black87,
+                                offset: Offset(2.0, 4.0),
+                              ),
+                            ],
+                            fontSize: 35,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => OverViewPage(1)),
@@ -118,13 +154,49 @@ class ListRiver extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 10),
-                Mainbox(
-                  title: "ลุ่มน้ำสาละวิน",
-                  color: Colors.white,
-                  height: 135,
-                  width: 370,
-                  font: 30,
-                  press: () {
+                GestureDetector(
+                  child: Container(
+                    height: 125,
+                    width: 360,
+                    margin: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 0.6),
+                      borderRadius: BorderRadius.circular(18),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/river2.png'),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                              backgroundmenu.withOpacity(0.45),
+                              BlendMode.dstATop)),
+                      color: backgroundmenu,
+                      boxShadow: [
+                        BoxShadow(
+                          color: backgroundmenu.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          offset: Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        "ลุ่มน้ำสาละวิน",
+                        style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                blurRadius: 5.0,
+                                color: Colors.black87,
+                                offset: Offset(2.0, 4.0),
+                              ),
+                            ],
+                            fontSize: 35,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => OverViewPage(2)),
@@ -132,13 +204,49 @@ class ListRiver extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 10),
-                Mainbox(
-                  title: "ลุ่มน้ำกกและโขงเหนือ",
-                  color: Colors.white,
-                  height: 135,
-                  width: 370,
-                  font: 30,
-                  press: () {
+                GestureDetector(
+                  child: Container(
+                    height: 125,
+                    width: 360,
+                    margin: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 0.6),
+                      borderRadius: BorderRadius.circular(18),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/river3.png'),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                              backgroundmenu.withOpacity(0.45),
+                              BlendMode.dstATop)),
+                      color: backgroundmenu,
+                      boxShadow: [
+                        BoxShadow(
+                          color: backgroundmenu.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          offset: Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        "ลุ่มน้ำกกและโขงเหนือ",
+                        style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                blurRadius: 5.0,
+                                color: Colors.black87,
+                                offset: Offset(2.0, 4.0),
+                              ),
+                            ],
+                            fontSize: 35,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => OverViewPage(3)),
@@ -151,18 +259,19 @@ class ListRiver extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
+                height: size.height*1,
+                  width: size.width*1,
+                  margin: const EdgeInsets.only(top:15),
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/wavedown.png"),
-                        fit: BoxFit.fill),
-                    gradient: LinearGradient(
-                      colors: [waveup2, waveup1],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/wavedown.png"),
+                      fit: BoxFit.fill),
+                  gradient: LinearGradient(
+                    colors: [waveup2, waveup1],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                   ),
-                height: 110,
-                width: 450,
+                ),
                 child: IconButton(
                     icon: Image.asset('assets/images/home.png'),
                     onPressed: () {

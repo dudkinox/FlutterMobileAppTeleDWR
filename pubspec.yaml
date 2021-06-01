@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   photo_view: ^0.3.1
-
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -68,6 +68,7 @@ flutter:
     - images/bg2.png
     - images/ic_launcher.png
     - assets/images/loading1.gif
+    - assets/images/loading2.gif
     - assets/images/beach.png
     - assets/images/bg.png
     - assets/images/bg2.png
@@ -81,6 +82,9 @@ flutter:
     - assets/images/lineriver.png
     - assets/images/web.png
     - assets/images/contact.png
+    - assets/images/river1.png
+    - assets/images/river2.png
+    - assets/images/river3.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

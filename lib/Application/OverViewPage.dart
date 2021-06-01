@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:http/http.dart' as http;
 import 'package:dwr0001/Models/station_model.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,6 @@ class MyDisplayClass extends StatelessWidget {
         elevation: 10.0,
       ),
       body: Center(
-        
         child: FutureBuilder<List<StationModel>>(
           future: getStationList(basinID),
           builder: (context, snapshot) {
@@ -43,9 +43,13 @@ class MyDisplayClass extends StatelessWidget {
                   children: [
                     new ListTile(
                       leading: Container(
-                      child: Material(
-                        shape: CircleBorder(),
-                        elevation: 2.0,
+                      child: AvatarGlow(
+                          glowColor: Colors.blue,
+                          endRadius: 35.0,
+                          duration: Duration(milliseconds: 2000),
+                          repeat: true,
+                          showTwoGlows: true,
+                          repeatPauseDuration: Duration(milliseconds: 200),
                   child: CircleAvatar(
                         radius: 18.0,
                         child: CircleAvatar(
