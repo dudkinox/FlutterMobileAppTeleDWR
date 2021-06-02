@@ -34,7 +34,9 @@ dependencies:
   bezier_chart: ^1.0.16
   flutter_glow: ^0.2.0
   avatar_glow: ^2.0.1
-  url_launcher: ^5.1.2
+  url_launcher: ^6.0.5
+  pull_to_refresh: ^2.0.0
+  flutter_session: ^0.1.1
 
 dev_dependencies:
   flutter_test:

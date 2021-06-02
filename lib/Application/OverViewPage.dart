@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:dwr0001/components/river/River.dart';
+import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 import 'package:dwr0001/Models/station_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_glow/flutter_glow.dart';
 import 'StationPage.dart';
 
 // ignore: must_be_immutable
@@ -24,6 +24,7 @@ class OverViewPage extends StatelessWidget {
 class MyDisplayClass extends StatelessWidget {
   MyDisplayClass(this.basinID);
   var basinID;
+  sentRiver(basinID);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,17 +111,18 @@ class MyDisplayClass extends StatelessWidget {
                           Icon(Icons.arrow_forward_ios), // icon-2
                         ],
                       ),
-                      onTap: () {
+                      onTap: () async {
+                        await FlutterSession().set('river', basinID.toString());
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
                                     StationPage(stn_id: station[i].STN_ID)));
                       },
-                      onLongPress: () {
-                        print(
-                          Text("Long Pressed"),
-                        );
+                      onLongPress: () async {
+                        // print(
+                        //   Text("Long Pressed" + basinID),
+                        // );
                       },
                     ),
                     new ListBody(
@@ -142,6 +144,8 @@ class MyDisplayClass extends StatelessWidget {
       ),
     );
   }
+
+  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
 
 Future<StationModel> getStation() async {

@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:bezier_chart/bezier_chart.dart';
 import 'package:dwr0001/Application/OverViewPage.dart';
 import 'package:dwr0001/Models/station_model.dart';
-import 'package:dwr0001/components/body.dart';
 import 'package:dwr0001/components/river/River.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/painting.dart' as painting;
 
@@ -35,8 +35,15 @@ class MyDisplayClass extends StatelessWidget {
   var stnId;
   StationModel stationData;
   String _title = 'ข้อมูลตรวจวัด';
+  // ignore: non_constant_identifier_names
+
+  var river_number;
 
   String get family => null;
+
+  BuildContext get globalContext => null;
+
+  get basinID => null;
   // final List<DataModelGet> data_ = FutureBuilder List<DataModelGet>>(
   //    future: getStationData(basinID),
   //     builder: (context, snapshot) {
@@ -77,12 +84,51 @@ class MyDisplayClass extends StatelessWidget {
         ),
         elevation: 10.0,
         automaticallyImplyLeading: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () => {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => River()))
-          },
+        leading: Column(
+          children: [
+            FutureBuilder(
+                future: FlutterSession().get('river'),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    var number_river = "$snapshot";
+                    if (number_river == "AsyncSnapshot<dynamic>(ConnectionState.done, 1, null, null)"){
+                      return IconButton(
+                        icon: Icon(Icons.arrow_back_ios),
+                        onPressed: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          OverViewPage(1))),
+                            });
+                    }
+                    else if (number_river == "AsyncSnapshot<dynamic>(ConnectionState.done, 2, null, null)"){
+                      return IconButton(
+                        icon: Icon(Icons.arrow_back_ios),
+                        onPressed: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          OverViewPage(2))),
+                            });
+                    }else{
+                      return IconButton(
+                        icon: Icon(Icons.arrow_back_ios),
+                        onPressed: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          OverViewPage(3))),
+                            });
+                    }
+                  } else {
+                    print('snapshot.error: ${snapshot.error.toString()}');
+                    return Text(snapshot.error.toString());
+                  }
+                }),
+          ],
         ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -98,6 +144,7 @@ class MyDisplayClass extends StatelessWidget {
         onWillPop: () {
           painting.imageCache.clear();
           Navigator.of(context).pop(true);
+          return new Future.value(true);
         },
         child: TabBarView(
           children: [
@@ -144,7 +191,7 @@ class MyDisplayClass extends StatelessWidget {
                         print('Response JsonDecode: $station');
 
                         // return Text(station.length.toString());
-                        _title = "สถานี55 : " + station.STN_Name;
+                        _title = "สถานี : " + station.STN_Name;
 
                         return (SingleChildScrollView(
                             scrollDirection: Axis.vertical,

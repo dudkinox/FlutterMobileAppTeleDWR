@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import '../river/River.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
 class EventPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -193,3 +194,4 @@ class EventPage extends StatelessWidget {
     );
   }
 }
+
