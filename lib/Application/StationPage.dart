@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/painting.dart' as painting;
-
 import '../Models/data_Model.dart';
 
 class StationPage extends StatelessWidget {
@@ -41,9 +40,7 @@ class MyDisplayClass extends StatelessWidget {
 
   String get family => null;
 
-  BuildContext get globalContext => null;
 
-  get basinID => null;
   // final List<DataModelGet> data_ = FutureBuilder List<DataModelGet>>(
   //    future: getStationData(basinID),
   //     builder: (context, snapshot) {
@@ -56,6 +53,8 @@ class MyDisplayClass extends StatelessWidget {
 
   //);
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +63,11 @@ class MyDisplayClass extends StatelessWidget {
           child: Icon(Icons.refresh_outlined),
           onPressed: () async {
             await loadData();
+            imageCache.clear();
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              var stationPage = StationPage(stn_id: stnId);
+              return stationPage;
+            }));
           }),
       appBar: AppBar(
         bottom: TabBar(
@@ -91,37 +95,35 @@ class MyDisplayClass extends StatelessWidget {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     var number_river = "$snapshot";
-                    if (number_river == "AsyncSnapshot<dynamic>(ConnectionState.done, 1, null, null)"){
+                    if (number_river ==
+                        "AsyncSnapshot<dynamic>(ConnectionState.done, 1, null, null)") {
                       return IconButton(
-                        icon: Icon(Icons.arrow_back_ios),
-                        onPressed: () => {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          OverViewPage(1))),
-                            });
-                    }
-                    else if (number_river == "AsyncSnapshot<dynamic>(ConnectionState.done, 2, null, null)"){
+                          icon: Icon(Icons.arrow_back_ios),
+                          onPressed: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => OverViewPage(1))),
+                              });
+                    } else if (number_river ==
+                        "AsyncSnapshot<dynamic>(ConnectionState.done, 2, null, null)") {
                       return IconButton(
-                        icon: Icon(Icons.arrow_back_ios),
-                        onPressed: () => {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          OverViewPage(2))),
-                            });
-                    }else{
+                          icon: Icon(Icons.arrow_back_ios),
+                          onPressed: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => OverViewPage(2))),
+                              });
+                    } else {
                       return IconButton(
-                        icon: Icon(Icons.arrow_back_ios),
-                        onPressed: () => {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          OverViewPage(3))),
-                            });
+                          icon: Icon(Icons.arrow_back_ios),
+                          onPressed: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => OverViewPage(3))),
+                              });
                     }
                   } else {
                     print('snapshot.error: ${snapshot.error.toString()}');
