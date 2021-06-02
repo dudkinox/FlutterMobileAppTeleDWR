@@ -3,6 +3,7 @@ import '../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../river/River.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventPage extends StatelessWidget {
   @override
@@ -108,7 +109,9 @@ class EventPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      launch("http://tele-maeklong.dwr.go.th/");
+                    },
                   ),
                   SizedBox(height: 10),
                   GestureDetector(
