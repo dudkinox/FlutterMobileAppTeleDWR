@@ -76,6 +76,14 @@ class MyDisplayClass extends StatelessWidget {
               fontWeight: FontWeight.w700),
         ),
         elevation: 10.0,
+        automaticallyImplyLeading: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => River()))
+          },
+        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -1015,11 +1023,10 @@ class MyDisplayClass extends StatelessWidget {
             RefreshIndicator(
               onRefresh: () {
                 imageCache.clear();
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) {
-                      var stationPage = StationPage(stn_id: stnId);
-                      return stationPage;
-                    }));
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  var stationPage = StationPage(stn_id: stnId);
+                  return stationPage;
+                }));
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -1076,7 +1083,6 @@ class MyDisplayClass extends StatelessWidget {
   }
 }
 
-
 Future<StationModel> getStation(String stn_id) async {
   final String url =
       "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json_id?stn_id=" +
@@ -1085,18 +1091,17 @@ Future<StationModel> getStation(String stn_id) async {
   //final String url = "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
-    final response = await http.get(Uri.parse(url));
+  final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      final station = jsonDecode(response.body);
-      print('Response JsonDecode: $station');
-      return StationModel.fromJson(station);
-    } else {
-      print(response.statusCode.toString());
-      throw Exception('Failed load data with status code ${response.statusCode}');
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    final station = jsonDecode(response.body);
+    print('Response JsonDecode: $station');
+    return StationModel.fromJson(station);
+  } else {
+    print(response.statusCode.toString());
+    throw Exception('Failed load data with status code ${response.statusCode}');
   }
-  
 }
 
 List<StationModel> parseStation(String responseBody) {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:dwr0001/components/river/River.dart';
 import 'package:http/http.dart' as http;
 import 'package:dwr0001/Models/station_model.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +28,23 @@ class MyDisplayClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TELEDWR-รายการสถานี',
-          style: TextStyle( color: Colors.white, fontFamily: 'Kanit',fontSize: 18.0, fontWeight: FontWeight.w700),),
+        title: Text(
+          'TELEDWR-รายการสถานี',
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Kanit',
+              fontSize: 18.0,
+              fontWeight: FontWeight.w700),
+        ),
         elevation: 10.0,
+        automaticallyImplyLeading: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => River()))
+          },
+        ),
       ),
       body: Center(
         child: FutureBuilder<List<StationModel>>(
@@ -43,39 +58,51 @@ class MyDisplayClass extends StatelessWidget {
                   children: [
                     new ListTile(
                       leading: Container(
-                      child: AvatarGlow(
+                        child: AvatarGlow(
                           glowColor: Colors.blue,
                           endRadius: 35.0,
                           duration: Duration(milliseconds: 2000),
                           repeat: true,
                           showTwoGlows: true,
                           repeatPauseDuration: Duration(milliseconds: 200),
-                  child: CircleAvatar(
-                        radius: 18.0,
-                        child: CircleAvatar(
-                          radius: 0,
-                          backgroundColor: Colors.greenAccent,
+                          child: CircleAvatar(
+                            radius: 18.0,
+                            child: CircleAvatar(
+                              radius: 0,
+                              backgroundColor: Colors.greenAccent,
+                            ),
+                            backgroundColor: station[i].CURR_STATUS == "0"
+                                ? Colors.green
+                                : station[i].CURR_STATUS == "1"
+                                    ? Colors.yellow
+                                    : station[i].CURR_STATUS == "2"
+                                        ? Colors.red
+                                        : station[i].CURR_STATUS == "3"
+                                            ? Colors.white
+                                            : station[i].CURR_STATUS == "4"
+                                                ? Colors.grey
+                                                : station[i].CURR_STATUS == "5"
+                                                    ? Colors.black
+                                                    : Colors.green,
+                          ),
                         ),
-                        backgroundColor: station[i].CURR_STATUS == "0"
-                            ? Colors.green
-                            : station[i].CURR_STATUS == "1"
-                            ? Colors.yellow
-                            : station[i].CURR_STATUS == "2"
-                            ? Colors.red
-                            : station[i].CURR_STATUS == "3"
-                            ? Colors.white
-                            : station[i].CURR_STATUS == "4"
-                            ? Colors.grey
-                            : station[i].CURR_STATUS == "5"
-                            ? Colors.black
-                            : Colors.green,
                       ),
-              ),
-            ),
-                      title: new Text(station[i].STN_ID,
-                      style: TextStyle( color: Colors.black54, fontFamily: 'Kanit',fontSize: 18.0, fontWeight: FontWeight.w400),),
-                      subtitle: new Text(station[i].STN_Name,
-                        style: TextStyle( color: Colors.black54, fontFamily: 'Kanit',fontSize: 14.0, fontWeight: FontWeight.w200),),
+                      title: new Text(
+                        station[i].STN_ID,
+                        style: TextStyle(
+                            color: Colors.black54,
+                            fontFamily: 'Kanit',
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      subtitle: new Text(
+                        station[i].STN_Name,
+                        style: TextStyle(
+                            color: Colors.black54,
+                            fontFamily: 'Kanit',
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w200),
+                      ),
                       trailing: Wrap(
                         spacing: 12, // space between two icons
                         children: <Widget>[
@@ -117,8 +144,6 @@ class MyDisplayClass extends StatelessWidget {
   }
 }
 
-
-
 Future<StationModel> getStation() async {
   final String url =
       "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json_id?stn_id=TC140805";
@@ -149,10 +174,10 @@ Future<List<StationModel>> getStationList(var basinId) async {
   final String url = basinId == 1
       ? "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json"
       : basinId == 2
-      ? "http://tele-salawin.dwr.go.th/webservice/webservice_sl_json"
-      : basinId == 3
-      ? "http://tele-kokkhong.dwr.go.th/webservice/webservice_kk_json"
-      : "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
+          ? "http://tele-salawin.dwr.go.th/webservice/webservice_sl_json"
+          : basinId == 3
+              ? "http://tele-kokkhong.dwr.go.th/webservice/webservice_kk_json"
+              : "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
     print('Response status: ${response.statusCode}');
