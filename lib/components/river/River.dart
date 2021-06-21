@@ -9,6 +9,7 @@ class River extends StatelessWidget {
     // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 1,
         child: Scaffold(
@@ -48,7 +49,7 @@ class River extends StatelessWidget {
                   indicatorPadding: EdgeInsets.only(left: 40, right: 40),
                   tabs: [
                     Tab(
-                        child: Text('หน้ากิจกรรม',
+                        child: Text('Main Page',
                             style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
@@ -259,9 +260,9 @@ class ListRiver extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                height: size.height*1,
-                  width: size.width*1,
-                  margin: const EdgeInsets.only(top:15),
+                height: size.height * 1,
+                width: size.width * 1,
+                margin: const EdgeInsets.only(top: 15),
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/wavedown.png"),

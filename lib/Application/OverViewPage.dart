@@ -14,6 +14,7 @@ class OverViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var materialApp = MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyDisplayClass(basinID),
     );
     return materialApp;

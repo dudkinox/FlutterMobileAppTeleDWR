@@ -15,6 +15,7 @@ class _MainbodyState extends State<Mainbody> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 1,
         child: Container(
@@ -53,10 +54,9 @@ class _MainbodyState extends State<Mainbody> {
                     indicatorColor: Colors.lightBlueAccent,
                     indicatorWeight: 3.5,
                     indicatorPadding: EdgeInsets.only(left: 40, right: 40),
-                    
                     tabs: [
                       Tab(
-                          child: Text('หน้ากิจกรรม',
+                          child: Text('Main Page',
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
