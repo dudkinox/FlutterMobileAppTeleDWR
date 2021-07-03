@@ -110,6 +110,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_full_pdf_viewer",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_full_pdf_viewer-1.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "flutter_glow",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_glow-0.2.0",
       "packageUri": "lib/",
@@ -198,6 +204,12 @@
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "path_provider",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "path_provider_linux",
@@ -416,7 +428,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-07-03T15:34:03.499142Z",
+  "generated": "2021-07-03T18:35:48.339200Z",
   "generator": "pub",
   "generatorVersion": "2.13.3"
 }

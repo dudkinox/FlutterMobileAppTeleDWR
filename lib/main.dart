@@ -1,4 +1,5 @@
 import 'package:dwr0001/screen/welcome/welcome.dart';
+import 'package:dwr0001/screen/welcome/welcomeold.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +13,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'mytitle',
         theme: ThemeData(primarySwatch: Colors.cyan),
-        home: Welcome());
+        home: WelcomeOld());
   }
 }
