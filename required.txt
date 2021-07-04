@@ -1,0 +1,15 @@
+ทำวันที่ 4 ก.ค. 2564
+/:id
+mk 3, kk 1, sl 1
+/: date
+
+งานใหม่ node js
+รายละเอียด เป็น pdf
+API
+https://tmd.go.th/xml/region_daily_forecast.php?RegionID=1
+
+table id date
+รูป ป ด ว เวลา 10 
+ดักเวลา ถอยไป 1 ชั่วโมง 
+ถ้าคนขอ ไม่อยุ่ถึง 10.30 
+http://www.satda.tmd.go.th/sat/2021070410.jpg
