@@ -1,122 +1,109 @@
-import 'package:fluttertoast/fluttertoast.dart';
-import '../../components/body.dart';
+/// Line chart example
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
-class Welcome extends StatefulWidget {
-  @override
-  _WelcomeState createState() => _WelcomeState();
-}
+class AreaAndLineChart extends StatelessWidget {
+  final List<charts.Series> seriesList;
+  final bool animate;
 
-class _WelcomeState extends State<Welcome> {
-  DateTime backbuttonpressedTime;
+  AreaAndLineChart(this.seriesList, {this.animate});
+
+  /// Creates a [LineChart] with sample data and no transition.
+  factory AreaAndLineChart.withSampleData() {
+    return new AreaAndLineChart(
+      _createSampleData(),
+      // Disable animations for image tests.
+      animate: false,
+    );
+  }
+  final ScrollController _controllerOne = ScrollController();
+
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: WillPopScope(
-        onWillPop: onWillPop,
-        child: Container(
-          height: size.height,
-          width: double.infinity,
-          child: Stack(
-            alignment: Alignment.center,
-            children: <Widget>[
-              Positioned(
-                bottom: -255,
-                left: 20,
-                child: Image.asset(
-                  'assets/images/bg.png',
-                  fit: BoxFit.cover,
-                  width: size.width * 1.1,
+    return Scrollbar(
+      controller: _controllerOne,
+      isAlwaysShown: true,
+      child: GridView.builder(
+        controller: _controllerOne,
+        itemCount: 2,
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+        itemBuilder: (BuildContext context, int index) {
+          return Column(
+            children: [
+              Text(
+                index == 0
+                    ? "กราฟแสดงระดับน้ำฝน"
+                    : index == 1
+                        ? "กราฟแสดงปริมาณน้ำฝน"
+                        : "",
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              Flexible(
+                flex: 2,
+                child: Center(
+                  child: new charts.LineChart(
+                    seriesList,
+                    animate: animate,
+                    customSeriesRenderers: [
+                      new charts.LineRendererConfig(
+                          // ID used to link series to this renderer.
+                          customRendererId: 'customArea',
+                          includeArea: true,
+                          stacked: true),
+                    ],
+                  ),
                 ),
               ),
-              Positioned(
-                bottom: -260,
-                right: -10,
-                child: Image.asset(
-                  'assets/images/bg2.png',
-                  fit: BoxFit.cover,
-                  width: size.width * 1.1,
-                ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/logo.png",
-                    height: 246,
-                    width: 212,
-                  ),
-                  Text(
-                    "TeleDWR",
-                    style: TextStyle(
-                        shadows: [
-                          Shadow(
-                            blurRadius: 4.0,
-                            color: Colors.black87,
-                            offset: Offset(2.0, 2.0),
-                          ),
-                        ],
-                        fontSize: 60,
-                        color: Colors.indigo[400],
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Righteous',
-                        decoration: TextDecoration.none),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "ระบบติดตามสถานะการณ์น้ำทางไกลอัตโนมัติ",
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                        fontFamily: 'Kanit',
-                        decoration: TextDecoration.none),
-                  ),
-                  SizedBox(height: 170),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => Mainbody()));
-                    },
-                    child: Text(
-                      "Start",
-                      style: TextStyle(
-                          shadows: [
-                            Shadow(
-                              blurRadius: 10.0,
-                              color: Colors.black87,
-                              offset: Offset(2.0, 4.0),
-                            ),
-                          ],
-                          fontSize: 38,
-                          color: Colors.white,
-                          fontFamily: 'Righteous',
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              )
             ],
-          ),
-        ),
+          );
+        },
       ),
     );
   }
 
-  Future<bool> onWillPop() async {
-    DateTime currentTime = DateTime.now();
+  /// Create one series with sample hard coded data.
+  static List<charts.Series<LinearSales, int>> _createSampleData() {
+    final myFakeDesktopData = [
+      new LinearSales(0, 5),
+      new LinearSales(1, 25),
+      new LinearSales(2, 100),
+      new LinearSales(3, 75),
+    ];
 
-    bool backButton = backbuttonpressedTime == null ||
-        currentTime.difference(backbuttonpressedTime) > Duration(seconds: 3);
+    var myFakeTabletData = [
+      new LinearSales(0, 10),
+      new LinearSales(1, 50),
+      new LinearSales(2, 200),
+      new LinearSales(3, 150),
+    ];
 
-    if (backButton) {
-      backbuttonpressedTime = currentTime;
-      Fluttertoast.showToast(
-          msg: "กดอีกครั้งเพื่อออก!!",
-          backgroundColor: Colors.black,
-          textColor: Colors.white);
-      return false;
-    }
-    return true;
+    return [
+      new charts.Series<LinearSales, int>(
+        id: 'Desktop',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (LinearSales sales, _) => sales.year,
+        measureFn: (LinearSales sales, _) => sales.sales,
+        data: myFakeDesktopData,
+      )
+        // Configure our custom bar target renderer for this series.
+        ..setAttribute(charts.rendererIdKey, 'customArea'),
+      new charts.Series<LinearSales, int>(
+        id: 'Tablet',
+        colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
+        domainFn: (LinearSales sales, _) => sales.year,
+        measureFn: (LinearSales sales, _) => sales.sales,
+        data: myFakeTabletData,
+      ),
+    ];
   }
+}
+
+/// Sample linear data type.
+class LinearSales {
+  final int year;
+  final int sales;
+
+  LinearSales(this.year, this.sales);
 }

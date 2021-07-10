@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../MenuOld.dart';
+
 // ignore: must_be_immutable
 class StationOld extends StatelessWidget {
   StationOld(this.basinID);
@@ -32,11 +34,11 @@ class MyDisplayClass extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/banner/banner02/background03.png'),
-                fit: BoxFit.cover),
+                fit: BoxFit.fill),
           ),
           child: Column(
             children: <Widget>[
-              SizedBox(height: 120),
+              SizedBox(height: size.height * 0.15),
               GestureDetector(
                 onTap: () {},
                 child: Image(
@@ -53,7 +55,7 @@ class MyDisplayClass extends StatelessWidget {
                   height: 100,
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: size.height * 0.03),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -68,7 +70,7 @@ class MyDisplayClass extends StatelessWidget {
                   height: 85,
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: size.height * 0.03),
               GestureDetector(
                 onTap: () {
                   if (basinID == 3) {
@@ -84,7 +86,7 @@ class MyDisplayClass extends StatelessWidget {
                   height: 85,
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: size.height * 0.03),
               GestureDetector(
                 onTap: () {
                   if (basinID == 1) {
@@ -100,6 +102,23 @@ class MyDisplayClass extends StatelessWidget {
                       AssetImage('assets/banner/banner02/choice06_project.png'),
                   fit: BoxFit.cover,
                   height: 85,
+                ),
+              ),
+              SizedBox(height: size.height * 0.13),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MenuPageOld(
+                                data: '',
+                              )));
+                },
+                child: Image(
+                  image:
+                      AssetImage('assets/banner/back_button/button_back.png'),
+                  fit: BoxFit.cover,
+                  height: 50,
                 ),
               ),
             ],

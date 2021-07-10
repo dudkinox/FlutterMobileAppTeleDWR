@@ -60,7 +60,9 @@ class SignInPage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             // builder: (context) => OverViewPage()));
-                            builder: (context) => MenuPage()));
+                            builder: (context) => MenuPage(
+                                  data: '',
+                                )));
                   },
                 ),
               ),

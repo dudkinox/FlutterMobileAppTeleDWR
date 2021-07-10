@@ -20,25 +20,24 @@ class _WelcomeState extends State<WelcomeOld> {
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/banner/banner01/background02.png'),
-              fit: BoxFit.cover),
+              fit: BoxFit.fill),
         ),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 600),
-            Expanded(
-              child: IconButton(
-                icon: Image.asset(
-                  'assets/banner/banner01/sign_in.png',
-                ),
-                iconSize: 300,
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                        builder: (context) => MenuPageOld(
-                              data: '',
-                            )),
-                  );
-                },
+            SizedBox(height: size.height * 0.8),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (context) => MenuPageOld(
+                            data: '',
+                          )),
+                );
+              },
+              child: Image(
+                image: AssetImage('assets/banner/banner01/sign_in.png'),
+                fit: BoxFit.cover,
+                height: size.height * 0.11,
               ),
             ),
           ],

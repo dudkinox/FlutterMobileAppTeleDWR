@@ -35,7 +35,7 @@ dependencies:
   pull_to_refresh: ^2.0.0
   flutter_session: ^0.1.1
   responsive_flutter: ^0.0.4
-  # flutter_svg: ^0.22.0
+  charts_flutter: ^0.10.0
 
 dev_dependencies:
   flutter_test:
@@ -110,6 +110,12 @@ flutter:
     - assets/TabOne/hailstorm.png
     - assets/TabOne/tide_inv.png
     - assets/TabOne/tide.png
+    - assets/banner/bell/red.png
+    - assets/banner/bell/green.png
+    - assets/banner/bell/gray.png
+    - assets/banner/bell/yellow.png
+    - assets/banner/back_button/button_back.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
