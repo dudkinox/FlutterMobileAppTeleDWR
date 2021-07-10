@@ -89,7 +89,7 @@ class MyDisplayClass extends StatelessWidget {
               fontSize: 18.0,
               fontWeight: FontWeight.w700),
         ),
-        elevation: 10.0,
+        elevation: 0.0,
         automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),

@@ -15,17 +15,17 @@ class TabOne extends StatelessWidget {
       body: Container(
         height: size.height,
         width: double.infinity,
-        constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/banner/banner02/background03.png'),
+            image: AssetImage('assets/banner/banner02/background04.png'),
             fit: BoxFit.cover,
           ),
         ),
-        child: Container(
-          child: Column(
-            children: [
-              SizedBox(height: size.height * 0.02),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Column(
+            children: <Widget>[
+              SizedBox(height: 10),
               CustomPaint(painter: CurvePainter()),
               FutureBuilder<StationModel>(
                   future: getStation(stnId),

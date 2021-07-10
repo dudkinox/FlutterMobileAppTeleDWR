@@ -1,4 +1,3 @@
-import 'package:dwr0001/screen/welcome/welcome.dart';
 import 'package:dwr0001/screen/welcome/welcomeold.dart';
 import 'package:flutter/material.dart';
 
