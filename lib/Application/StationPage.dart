@@ -100,6 +100,13 @@ class MyDisplayClass extends StatelessWidget {
         ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.8),
+                blurRadius: 3,
+                offset: Offset(0, 2), // changes position of shadow
+              ),
+            ],
             gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,

@@ -30,16 +30,16 @@ class _MenuPageOldState extends State<MenuPageOld> {
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/banner/banner02/background03.png'),
-              fit: BoxFit.cover),
+              fit: BoxFit.fill),
         ),
         child: Column(children: <Widget>[
-          SizedBox(height: 120),
+          SizedBox(height: size.height * 0.15),
           GestureDetector(
             onTap: () {},
             child: Image(
               image: AssetImage('assets/banner/banner02/subhead01.png'),
               fit: BoxFit.cover,
-              height: 100,
+              height: size.height * 0.15,
             ),
           ),
           SizedBox(height: 30),
@@ -52,7 +52,7 @@ class _MenuPageOldState extends State<MenuPageOld> {
               image:
                   AssetImage('assets/banner/banner02/choice01_mae_klong.png'),
               fit: BoxFit.cover,
-              height: 85,
+              height: size.height * 0.135,
             ),
           ),
           SizedBox(height: 10),
@@ -64,7 +64,7 @@ class _MenuPageOldState extends State<MenuPageOld> {
             child: Image(
               image: AssetImage('assets/banner/banner02/choice02_salawin.png'),
               fit: BoxFit.cover,
-              height: 90,
+              height: size.height * 0.14,
             ),
           ),
           SizedBox(height: 10),
@@ -76,7 +76,7 @@ class _MenuPageOldState extends State<MenuPageOld> {
             child: Image(
               image: AssetImage('assets/banner/banner02/choice03_kok.png'),
               fit: BoxFit.cover,
-              height: 82,
+              height: size.height * 0.13,
             ),
           )
         ]),

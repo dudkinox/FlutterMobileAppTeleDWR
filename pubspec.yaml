@@ -34,6 +34,7 @@ dependencies:
   url_launcher: ^6.0.5
   pull_to_refresh: ^2.0.0
   flutter_session: ^0.1.1
+  responsive_flutter: ^0.0.4
   # flutter_svg: ^0.22.0
 
 dev_dependencies:
@@ -103,6 +104,12 @@ flutter:
     - assets/TabOne/cloud.png
     - assets/TabOne/cloud_rain.png
     - assets/TabOne/water_level.png
+    - assets/TabOne/climate_inv.png
+    - assets/TabOne/climate.png
+    - assets/TabOne/hailstorm_inv.png
+    - assets/TabOne/hailstorm.png
+    - assets/TabOne/tide_inv.png
+    - assets/TabOne/tide.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
