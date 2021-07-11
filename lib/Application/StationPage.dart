@@ -46,19 +46,19 @@ class MyDisplayClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.refresh_outlined),
-          onPressed: () async {
-            await loadData();
-            imageCache.clear();
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              var stationPage = StationPage(
-                stn_id: stnId,
-                basinID: basinID,
-              );
-              return stationPage;
-            }));
-          }),
+      // floatingActionButton: FloatingActionButton(
+      // child: Icon(Icons.refresh_outlined),
+      //     onPressed: () async {
+      //   await loadData();
+      //   imageCache.clear();
+      //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+      //     var stationPage = StationPage(
+      //       stn_id: stnId,
+      //       basinID: basinID,
+      //     );
+      //     return stationPage;
+      //   }));
+      // }),
       appBar: AppBar(
         bottom: TabBar(
           tabs: [

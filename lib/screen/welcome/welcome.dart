@@ -47,6 +47,7 @@ class AreaAndLineChart extends StatelessWidget {
                 height: 20,
               ),
               Card(
+                color: Colors.blue[100],
                 child: Text(
                   index == 0
                       ? " กราฟแสดงปริมาณน้ำฝน (มม.) "
@@ -60,6 +61,7 @@ class AreaAndLineChart extends StatelessWidget {
               Flexible(
                 flex: 2,
                 child: Card(
+                  color: Colors.blue[50],
                   margin: EdgeInsets.zero,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),

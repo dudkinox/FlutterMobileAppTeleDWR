@@ -115,6 +115,7 @@ flutter:
     - assets/TabOne/hailstorm_Gray.png
     - assets/TabOne/tide_inv.png
     - assets/TabOne/tide.png
+    - assets/TabOne/tide_Gray.png
     - assets/banner/bell/red.png
     - assets/banner/bell/green.png
     - assets/banner/bell/gray.png

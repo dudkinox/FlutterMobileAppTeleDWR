@@ -171,7 +171,7 @@ class TabOne extends StatelessWidget {
                                             children: [
                                               new Image(
                                                 image: AssetImage(
-                                                    'assets/TabOne/hailstorm.png'),
+                                                    'assets/TabOne/hailstorm_Gray.png'),
                                                 width: size.width * 0.1,
                                               ),
                                               Container(
@@ -321,7 +321,7 @@ class TabOne extends StatelessWidget {
                                               children: [
                                                 new Image(
                                                   image: AssetImage(
-                                                      'assets/TabOne/hailstorm.png'),
+                                                      'assets/TabOne/hailstorm_Gray.png'),
                                                   width: size.width * 0.1,
                                                 ),
                                                 Container(
@@ -469,7 +469,7 @@ class TabOne extends StatelessWidget {
                                               children: [
                                                 new Image(
                                                   image: AssetImage(
-                                                      'assets/TabOne/hailstorm.png'),
+                                                      'assets/TabOne/hailstorm_Gray.png'),
                                                   width: size.width * 0.1,
                                                 ),
                                                 Container(
@@ -607,7 +607,7 @@ class TabOne extends StatelessWidget {
                                               children: [
                                                 new Image(
                                                   image: AssetImage(
-                                                      'assets/TabOne/hailstorm.png'),
+                                                      'assets/TabOne/hailstorm_Gray.png'),
                                                   width: size.width * 0.1,
                                                 ),
                                                 Container(
@@ -774,7 +774,7 @@ class TabOne extends StatelessWidget {
                                           children: [
                                             new Image(
                                               image: AssetImage(
-                                                  'assets/TabOne/tide.png'),
+                                                  'assets/TabOne/tide_Gray.png'),
                                               width: size.width * 0.2,
                                             ),
                                             Column(
@@ -914,7 +914,7 @@ class TabOne extends StatelessWidget {
                                             children: [
                                               new Image(
                                                 image: AssetImage(
-                                                    'assets/TabOne/tide.png'),
+                                                    'assets/TabOne/tide_Gray.png'),
                                                 width: size.width * 0.2,
                                               ),
                                               Column(
