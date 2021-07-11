@@ -162,13 +162,9 @@ Future<StationModel> getStation(String stn_id) async {
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    // print('Response status: ${response.statusCode}');
-    // print('Response body: ${response.body}');
     final station = jsonDecode(response.body);
-    // print('Response JsonDecode: $station');
     return StationModel.fromJson(station);
   } else {
-    // print(response.statusCode.toString());
     throw Exception('Failed load data with status code ${response.statusCode}');
   }
 }
@@ -186,18 +182,13 @@ Future<List<StationModel>> getStationList(basinID, String s) async {
       "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    // print('Response status: ${response.statusCode}');
-    // print('Response body: ${response.body}');
-
     return parseStation(response.body);
   } else {
     throw Exception('Unable to fetch products from the REST API');
   }
 }
 
-loadData() async {
-  // print("LoadData");
-}
+loadData() async {}
 
 List<StationModel> parseData(String responseBody) {
   final parsed = json.decode(responseBody);
@@ -216,10 +207,7 @@ Future<StationModel> getStationData(String stn_id) async {
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    // print('Response status: ${response.statusCode}');
-    // print('Response body: ${response.body}');
     final station = jsonDecode(response.body);
-    // print('Response JsonDecode: $station');
     return StationModel.fromJson(station);
   } else {
     throw Exception();
@@ -233,6 +221,7 @@ List<DataModelGet> parseData_(String responseBody) {
       .toList();
 }
 
+// ignore: non_constant_identifier_names
 Future<List<DataModelGet>> getStationData24H(String stn_id) async {
   //final String url ="http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json?stn_id=" + stn_id;
   final String url =
@@ -241,8 +230,6 @@ Future<List<DataModelGet>> getStationData24H(String stn_id) async {
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
-    // print('Response status: ${response.statusCode}');
-    // print('Response body: ${response.body}');
     return parseData_(response.body);
   } else {
     throw Exception();

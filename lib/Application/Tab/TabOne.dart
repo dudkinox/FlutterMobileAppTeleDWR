@@ -12,6 +12,8 @@ class TabOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         height: size.height,
@@ -59,13 +61,12 @@ class TabOne extends StatelessWidget {
                       CURR_Water_D_Level_MSL_ = station.CURR_Water_D_Level_MSL;
                       CURR_FLOW_ = station.CURR_FLOW;
                     }
-                    print('Response JsonDecode: $station');
                     _title = "สถานี : " + stnId + " " + station.STN_Name;
                     var _dateshow =
                         "วันที่บันทึกข้อมูล \n" + station.LAST_UPDATE;
                     return (Container(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
                               padding: EdgeInsets.all(10.0),
@@ -86,8 +87,8 @@ class TabOne extends StatelessWidget {
                                   ),
                                 ],
                               )),
+                          SizedBox(height: size.height * 0.01),
                           Container(
-                            padding: EdgeInsets.all(30.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -123,297 +124,536 @@ class TabOne extends StatelessWidget {
                                 SizedBox(
                                   width: size.width * 0.05,
                                 ),
-                                Container(
-                                  padding: EdgeInsets.all(5.0),
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.8),
-                                        blurRadius: 3,
-                                        offset: Offset(
-                                            4, 3), // changes position of shadow
-                                      ),
-                                    ],
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      new Image(
-                                        image: AssetImage(
-                                            'assets/TabOne/hailstorm.png'),
-                                        width: size.width * 0.1,
-                                      ),
-                                      Text(
-                                        station.CURR_Acc_Rain_15_M + " มม.",
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      child: Text(
+                                        "ปริมาณน้ำฝนสะสม",
                                         style: TextStyle(
-                                            shadows: [
-                                              Shadow(
-                                                blurRadius: 4.0,
-                                                color: Colors.black87,
-                                                offset: Offset(2.0, 2.0),
-                                              ),
-                                            ],
                                             fontSize:
                                                 ResponsiveFlutter.of(context)
-                                                    .fontSize(4),
+                                                    .fontSize(2),
                                             color: Colors.blue[900],
                                             fontWeight: FontWeight.bold,
                                             fontFamily: 'Righteous',
                                             decoration: TextDecoration.none),
                                       ),
-                                      Text(
-                                        "15 นาที",
-                                        style: TextStyle(
-                                            shadows: [
-                                              Shadow(
-                                                blurRadius: 0,
-                                                color: Colors.black87,
-                                                offset: Offset(1.0, 1.0),
-                                              ),
-                                            ],
-                                            fontSize:
-                                                ResponsiveFlutter.of(context)
-                                                    .fontSize(4),
-                                            color: Colors.blue,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Righteous',
-                                            decoration: TextDecoration.none),
+                                    ),
+                                    SizedBox(height: size.height * 0.005),
+                                    Container(
+                                      width: deviceWidth * 0.35,
+                                      padding: EdgeInsets.all(10.0),
+                                      decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.8),
+                                            blurRadius: 3,
+                                            offset: Offset(4,
+                                                3), // changes position of shadow
+                                          ),
+                                        ],
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                    ],
-                                  ),
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                              child: Column(
+                                            children: [
+                                              new Image(
+                                                image: AssetImage(
+                                                    'assets/TabOne/hailstorm.png'),
+                                                width: size.width * 0.1,
+                                              ),
+                                              Container(
+                                                padding: EdgeInsets.all(10.0),
+                                                alignment: Alignment.topRight,
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
+                                                  children: [
+                                                    Text(
+                                                      station
+                                                          .CURR_Acc_Rain_15_M,
+                                                      style: TextStyle(
+                                                          shadows: [
+                                                            Shadow(
+                                                              blurRadius: 4.0,
+                                                              color: Colors
+                                                                  .black87,
+                                                              offset: Offset(
+                                                                  2.0, 2.0),
+                                                            ),
+                                                          ],
+                                                          fontSize:
+                                                              ResponsiveFlutter
+                                                                      .of(
+                                                                          context)
+                                                                  .fontSize(4),
+                                                          color:
+                                                              Colors.blue[900],
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily:
+                                                              'Righteous',
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none),
+                                                    ),
+                                                    Text(
+                                                      "mm.",
+                                                      style: TextStyle(
+                                                          shadows: [
+                                                            Shadow(
+                                                              blurRadius: 0,
+                                                              color: Colors
+                                                                  .black87,
+                                                              offset: Offset(
+                                                                  1.0, 1.0),
+                                                            ),
+                                                          ],
+                                                          fontSize:
+                                                              ResponsiveFlutter
+                                                                      .of(
+                                                                          context)
+                                                                  .fontSize(2),
+                                                          color: Colors.blue,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily:
+                                                              'Righteous',
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none),
+                                                    ),
+                                                    Container(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(
+                                                        "15 นาที",
+                                                        style: TextStyle(
+                                                            shadows: [
+                                                              Shadow(
+                                                                blurRadius: 0,
+                                                                color: Colors
+                                                                    .black87,
+                                                                offset: Offset(
+                                                                    1.0, 1.0),
+                                                              ),
+                                                            ],
+                                                            fontSize:
+                                                                ResponsiveFlutter.of(
+                                                                        context)
+                                                                    .fontSize(
+                                                                        2),
+                                                            color: Colors.blue,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Righteous',
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ))
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
                           ),
+                          SizedBox(height: size.height * 0.02),
                           Container(
-                            child: Row(children: [
-                              SizedBox(width: size.width * 0.1),
-                              Container(
-                                  child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    "ปริมาณน้ำฝนสะสม",
-                                    style: TextStyle(
-                                        fontSize: ResponsiveFlutter.of(context)
-                                            .fontSize(2),
-                                        color: Colors.blue[900],
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Righteous',
-                                        decoration: TextDecoration.none),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                  Container(
+                                      child: Column(
                                     children: [
-                                      Container(
-                                        padding: EdgeInsets.all(5.0),
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.8),
-                                              blurRadius: 3,
-                                              offset: Offset(4,
-                                                  3), // changes position of shadow
+                                      Row(
+                                        children: [
+                                          Container(
+                                            width: deviceWidth * 0.25,
+                                            padding: EdgeInsets.all(10.0),
+                                            decoration: BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.8),
+                                                  blurRadius: 3,
+                                                  offset: Offset(4,
+                                                      3), // changes position of shadow
+                                                ),
+                                              ],
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
                                             ),
-                                          ],
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            new Image(
-                                              image: AssetImage(
-                                                  'assets/TabOne/hailstorm.png'),
-                                              width: size.width * 0.1,
-                                            ),
-                                            Text(
-                                              station.CURR_Acc_Rain_30_M +
-                                                  " มม.",
-                                              style: TextStyle(
-                                                  shadows: [
-                                                    Shadow(
-                                                      blurRadius: 4.0,
-                                                      color: Colors.black87,
-                                                      offset: Offset(2.0, 2.0),
+                                            child: Column(
+                                              children: [
+                                                new Image(
+                                                  image: AssetImage(
+                                                      'assets/TabOne/hailstorm.png'),
+                                                  width: size.width * 0.1,
+                                                ),
+                                                Container(
+                                                    child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
+                                                  children: [
+                                                    Text(
+                                                      station
+                                                          .CURR_Acc_Rain_30_M,
+                                                      style: TextStyle(
+                                                          shadows: [
+                                                            Shadow(
+                                                              blurRadius: 4.0,
+                                                              color: Colors
+                                                                  .black87,
+                                                              offset: Offset(
+                                                                  2.0, 2.0),
+                                                            ),
+                                                          ],
+                                                          fontSize:
+                                                              ResponsiveFlutter
+                                                                      .of(
+                                                                          context)
+                                                                  .fontSize(3),
+                                                          color:
+                                                              Colors.blue[900],
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily:
+                                                              'Righteous',
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none),
                                                     ),
-                                                  ],
-                                                  fontSize:
-                                                      ResponsiveFlutter.of(
-                                                              context)
-                                                          .fontSize(3),
-                                                  color: Colors.blue[900],
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Righteous',
-                                                  decoration:
-                                                      TextDecoration.none),
-                                            ),
-                                            Text(
-                                              "30 นาที",
-                                              style: TextStyle(
-                                                  shadows: [
-                                                    Shadow(
-                                                      blurRadius: 0,
-                                                      color: Colors.black87,
-                                                      offset: Offset(1.0, 1.0),
+                                                    Text(
+                                                      " mm.",
+                                                      style: TextStyle(
+                                                          shadows: [
+                                                            Shadow(
+                                                              blurRadius: 0,
+                                                              color: Colors
+                                                                  .black87,
+                                                              offset: Offset(
+                                                                  1.0, 1.0),
+                                                            ),
+                                                          ],
+                                                          fontSize:
+                                                              ResponsiveFlutter
+                                                                      .of(
+                                                                          context)
+                                                                  .fontSize(2),
+                                                          color: Colors.blue,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily:
+                                                              'Righteous',
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none),
                                                     ),
+                                                    Container(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(
+                                                        "30 นาที",
+                                                        style: TextStyle(
+                                                            shadows: [
+                                                              Shadow(
+                                                                blurRadius: 0,
+                                                                color: Colors
+                                                                    .black87,
+                                                                offset: Offset(
+                                                                    1.0, 1.0),
+                                                              ),
+                                                            ],
+                                                            fontSize:
+                                                                ResponsiveFlutter.of(
+                                                                        context)
+                                                                    .fontSize(
+                                                                        2),
+                                                            color: Colors.blue,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Righteous',
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none),
+                                                      ),
+                                                    )
                                                   ],
-                                                  fontSize:
-                                                      ResponsiveFlutter.of(
-                                                              context)
-                                                          .fontSize(2),
-                                                  color: Colors.blue,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Righteous',
-                                                  decoration:
-                                                      TextDecoration.none),
+                                                ))
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(width: size.width * 0.05),
-                                      Container(
-                                        padding: EdgeInsets.all(5.0),
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.8),
-                                              blurRadius: 3,
-                                              offset: Offset(4,
-                                                  3), // changes position of shadow
+                                          ),
+                                          SizedBox(width: size.width * 0.05),
+                                          Container(
+                                            width: deviceWidth * 0.25,
+                                            padding: EdgeInsets.all(10.0),
+                                            decoration: BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.8),
+                                                  blurRadius: 3,
+                                                  offset: Offset(4,
+                                                      3), // changes position of shadow
+                                                ),
+                                              ],
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
                                             ),
-                                          ],
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            new Image(
-                                              image: AssetImage(
-                                                  'assets/TabOne/hailstorm.png'),
-                                              width: size.width * 0.1,
+                                            child: Column(
+                                              children: [
+                                                new Image(
+                                                  image: AssetImage(
+                                                      'assets/TabOne/hailstorm.png'),
+                                                  width: size.width * 0.1,
+                                                ),
+                                                Container(
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        station
+                                                            .CURR_Acc_Rain_60_M,
+                                                        style: TextStyle(
+                                                            shadows: [
+                                                              Shadow(
+                                                                blurRadius: 4.0,
+                                                                color: Colors
+                                                                    .black87,
+                                                                offset: Offset(
+                                                                    2.0, 2.0),
+                                                              ),
+                                                            ],
+                                                            fontSize:
+                                                                ResponsiveFlutter
+                                                                        .of(
+                                                                            context)
+                                                                    .fontSize(
+                                                                        3),
+                                                            color: Colors
+                                                                .blue[900],
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Righteous',
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none),
+                                                      ),
+                                                      Text(
+                                                        " mm.",
+                                                        style: TextStyle(
+                                                            shadows: [
+                                                              Shadow(
+                                                                blurRadius: 0,
+                                                                color: Colors
+                                                                    .black87,
+                                                                offset: Offset(
+                                                                    1.0, 1.0),
+                                                              ),
+                                                            ],
+                                                            fontSize:
+                                                                ResponsiveFlutter.of(
+                                                                        context)
+                                                                    .fontSize(
+                                                                        2),
+                                                            color: Colors.blue,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Righteous',
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none),
+                                                      ),
+                                                      Container(
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Text(
+                                                          "60 นาที",
+                                                          style: TextStyle(
+                                                              shadows: [
+                                                                Shadow(
+                                                                  blurRadius: 0,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  offset:
+                                                                      Offset(
+                                                                          1.0,
+                                                                          1.0),
+                                                                ),
+                                                              ],
+                                                              fontSize:
+                                                                  ResponsiveFlutter.of(
+                                                                          context)
+                                                                      .fontSize(
+                                                                          2),
+                                                              color:
+                                                                  Colors.blue,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontFamily:
+                                                                  'Righteous',
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
                                             ),
-                                            Text(
-                                              station.CURR_Acc_Rain_60_M +
-                                                  " มม.",
-                                              style: TextStyle(
-                                                  shadows: [
-                                                    Shadow(
-                                                      blurRadius: 4.0,
-                                                      color: Colors.black87,
-                                                      offset: Offset(2.0, 2.0),
-                                                    ),
-                                                  ],
-                                                  fontSize:
-                                                      ResponsiveFlutter.of(
-                                                              context)
-                                                          .fontSize(3),
-                                                  color: Colors.blue[900],
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Righteous',
-                                                  decoration:
-                                                      TextDecoration.none),
+                                          ),
+                                          SizedBox(width: size.width * 0.05),
+                                          Container(
+                                            width: deviceWidth * 0.25,
+                                            padding: EdgeInsets.all(10.0),
+                                            decoration: BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.8),
+                                                  blurRadius: 3,
+                                                  offset: Offset(4,
+                                                      3), // changes position of shadow
+                                                ),
+                                              ],
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
                                             ),
-                                            Text(
-                                              "60 นาที",
-                                              style: TextStyle(
-                                                  shadows: [
-                                                    Shadow(
-                                                      blurRadius: 0,
-                                                      color: Colors.black87,
-                                                      offset: Offset(1.0, 1.0),
-                                                    ),
-                                                  ],
-                                                  fontSize:
-                                                      ResponsiveFlutter.of(
-                                                              context)
-                                                          .fontSize(2),
-                                                  color: Colors.blue,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Righteous',
-                                                  decoration:
-                                                      TextDecoration.none),
+                                            child: Column(
+                                              children: [
+                                                new Image(
+                                                  image: AssetImage(
+                                                      'assets/TabOne/hailstorm.png'),
+                                                  width: size.width * 0.1,
+                                                ),
+                                                Container(
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        station
+                                                            .CURR_Acc_Rain_12_H,
+                                                        style: TextStyle(
+                                                            shadows: [
+                                                              Shadow(
+                                                                blurRadius: 4.0,
+                                                                color: Colors
+                                                                    .black87,
+                                                                offset: Offset(
+                                                                    2.0, 2.0),
+                                                              ),
+                                                            ],
+                                                            fontSize:
+                                                                ResponsiveFlutter
+                                                                        .of(
+                                                                            context)
+                                                                    .fontSize(
+                                                                        3),
+                                                            color: Colors
+                                                                .blue[900],
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Righteous',
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none),
+                                                      ),
+                                                      Text(
+                                                        " mm.",
+                                                        style: TextStyle(
+                                                            shadows: [
+                                                              Shadow(
+                                                                blurRadius: 0,
+                                                                color: Colors
+                                                                    .black87,
+                                                                offset: Offset(
+                                                                    1.0, 1.0),
+                                                              ),
+                                                            ],
+                                                            fontSize:
+                                                                ResponsiveFlutter.of(
+                                                                        context)
+                                                                    .fontSize(
+                                                                        2),
+                                                            color: Colors.blue,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Righteous',
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none),
+                                                      ),
+                                                      Container(
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Text(
+                                                          "12 ชั่วโมง",
+                                                          style: TextStyle(
+                                                              shadows: [
+                                                                Shadow(
+                                                                  blurRadius: 0,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  offset:
+                                                                      Offset(
+                                                                          1.0,
+                                                                          1.0),
+                                                                ),
+                                                              ],
+                                                              fontSize:
+                                                                  ResponsiveFlutter.of(
+                                                                          context)
+                                                                      .fontSize(
+                                                                          2),
+                                                              color:
+                                                                  Colors.blue,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontFamily:
+                                                                  'Righteous',
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(width: size.width * 0.05),
-                                      Container(
-                                        padding: EdgeInsets.all(5.0),
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.8),
-                                              blurRadius: 3,
-                                              offset: Offset(4,
-                                                  3), // changes position of shadow
-                                            ),
-                                          ],
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            new Image(
-                                              image: AssetImage(
-                                                  'assets/TabOne/hailstorm.png'),
-                                              width: size.width * 0.1,
-                                            ),
-                                            Text(
-                                              station.CURR_Acc_Rain_12_H +
-                                                  " มม.",
-                                              style: TextStyle(
-                                                  shadows: [
-                                                    Shadow(
-                                                      blurRadius: 4.0,
-                                                      color: Colors.black87,
-                                                      offset: Offset(2.0, 2.0),
-                                                    ),
-                                                  ],
-                                                  fontSize:
-                                                      ResponsiveFlutter.of(
-                                                              context)
-                                                          .fontSize(3),
-                                                  color: Colors.blue[900],
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Righteous',
-                                                  decoration:
-                                                      TextDecoration.none),
-                                            ),
-                                            Text(
-                                              "12 ชั่วโมง",
-                                              style: TextStyle(
-                                                  shadows: [
-                                                    Shadow(
-                                                      blurRadius: 0,
-                                                      color: Colors.black87,
-                                                      offset: Offset(1.0, 1.0),
-                                                    ),
-                                                  ],
-                                                  fontSize:
-                                                      ResponsiveFlutter.of(
-                                                              context)
-                                                          .fontSize(2),
-                                                  color: Colors.blue,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Righteous',
-                                                  decoration:
-                                                      TextDecoration.none),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                          ),
+                                        ],
+                                      )
                                     ],
-                                  )
-                                ],
-                              ))
-                            ]),
+                                  ))
+                                ]),
                           ),
                           SizedBox(
                             height: size.height * 0.02,
@@ -422,7 +662,6 @@ class TabOne extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(width: size.width * 0.01),
                                 Container(
                                   child: Column(
                                     crossAxisAlignment:
@@ -474,11 +713,21 @@ class TabOne extends StatelessWidget {
                                                       : station
                                                           .CURR_Water_D_Level_MSL,
                                                   style: TextStyle(
+                                                      shadows: [
+                                                        Shadow(
+                                                          blurRadius: 4.0,
+                                                          color: Colors.black87,
+                                                          offset:
+                                                              Offset(2.0, 2.0),
+                                                        ),
+                                                      ],
                                                       fontSize:
                                                           ResponsiveFlutter.of(
                                                                   context)
                                                               .fontSize(3),
                                                       color: Colors.blue[900],
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontFamily: 'Righteous',
                                                       decoration:
                                                           TextDecoration.none),

@@ -1,21 +1,30 @@
 /// Line chart example
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:dwr0001/Application/StationPage.dart';
+import 'package:dwr0001/Models/data_Model.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AreaAndLineChart extends StatelessWidget {
   final List<charts.Series> seriesList;
+  final List<charts.Series> seriesList2;
   final bool animate;
+  var data;
 
-  AreaAndLineChart(this.seriesList, {this.animate});
+  AreaAndLineChart(this.data, this.seriesList, this.seriesList2,
+      {this.animate});
 
   /// Creates a [LineChart] with sample data and no transition.
-  factory AreaAndLineChart.withSampleData() {
+  factory AreaAndLineChart.withSampleData(data) {
     return new AreaAndLineChart(
-      _createSampleData(),
+      data,
+      _createSampleData(data),
+      _createSampleData2(data),
       // Disable animations for image tests.
-      animate: false,
+      animate: true,
     );
   }
+
   final ScrollController _controllerOne = ScrollController();
 
   @override
@@ -33,10 +42,10 @@ class AreaAndLineChart extends StatelessWidget {
             children: [
               Text(
                 index == 0
-                    ? "กราฟแสดงระดับน้ำฝน"
+                    ? "กราฟแสดงปริมาณน้ำฝน (มม.)"
                     : index == 1
-                        ? "กราฟแสดงปริมาณน้ำฝน"
-                        : "",
+                        ? "กราฟแสดงระดับน้ำ (ม.รทก.)"
+                        : "กราฟแสดงปริมาณน้ำ (ลบม. / วินาที)",
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
@@ -44,12 +53,16 @@ class AreaAndLineChart extends StatelessWidget {
                 flex: 2,
                 child: Center(
                   child: new charts.LineChart(
-                    seriesList,
+                    index == 0
+                        ? seriesList
+                        : index == 1
+                            ? seriesList2
+                            : "",
                     animate: animate,
                     customSeriesRenderers: [
                       new charts.LineRendererConfig(
                           // ID used to link series to this renderer.
-                          customRendererId: 'customArea',
+                          customRendererId: 'customArea' + index.toString(),
                           includeArea: true,
                           stacked: true),
                     ],
@@ -64,46 +77,75 @@ class AreaAndLineChart extends StatelessWidget {
   }
 
   /// Create one series with sample hard coded data.
-  static List<charts.Series<LinearSales, int>> _createSampleData() {
-    final myFakeDesktopData = [
-      new LinearSales(0, 5),
-      new LinearSales(1, 25),
-      new LinearSales(2, 100),
-      new LinearSales(3, 75),
-    ];
-
-    var myFakeTabletData = [
-      new LinearSales(0, 10),
-      new LinearSales(1, 50),
-      new LinearSales(2, 200),
-      new LinearSales(3, 150),
-    ];
+  static List<charts.Series<LinearSales, double>> _createSampleData(var data) {
+    // ignore: deprecated_member_use
+    List<LinearSales> rain = new List<LinearSales>(data.length);
+    for (var i = 0; i < data.length; i++) {
+      rain[i] = new LinearSales(
+          double.parse(i.toString()), double.parse(data[i].Rain_15_M));
+    }
 
     return [
-      new charts.Series<LinearSales, int>(
+      new charts.Series<LinearSales, double>(
         id: 'Desktop',
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
         domainFn: (LinearSales sales, _) => sales.year,
         measureFn: (LinearSales sales, _) => sales.sales,
-        data: myFakeDesktopData,
+        data: rain,
       )
         // Configure our custom bar target renderer for this series.
-        ..setAttribute(charts.rendererIdKey, 'customArea'),
-      new charts.Series<LinearSales, int>(
+        ..setAttribute(charts.rendererIdKey, 'customArea0'),
+    ];
+  }
+
+  /// Create one series with sample hard coded data.
+  static List<charts.Series<LinearSales2, double>> _createSampleData2(
+      var data) {
+    var number = data.length;
+    // ignore: deprecated_member_use
+    List<LinearSales2> rain_D = new List<LinearSales2>(number);
+    for (var i = 0; i < number; i++) {
+      rain_D[i] = new LinearSales2(
+          double.parse(i.toString()), double.parse(data[i].Water_D));
+    }
+    // ignore: deprecated_member_use
+    List<LinearSales2> rain_F = new List<LinearSales2>(number);
+    for (var j = 0; j < number; j++) {
+      rain_F[j] = new LinearSales2(double.parse(j.toString()),
+          double.parse(data[j].Water_F == null ? "0.0" : ""));
+    }
+
+    return [
+      new charts.Series<LinearSales2, double>(
+        id: 'Desktop',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (LinearSales2 sales, _) => sales.year2,
+        measureFn: (LinearSales2 sales, _) => sales.sales2,
+        data: rain_D,
+      ),
+      // Configure our custom bar target renderer for this series.
+      new charts.Series<LinearSales2, double>(
         id: 'Tablet',
         colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
-        domainFn: (LinearSales sales, _) => sales.year,
-        measureFn: (LinearSales sales, _) => sales.sales,
-        data: myFakeTabletData,
-      ),
+        domainFn: (LinearSales2 sales, _) => sales.year2,
+        measureFn: (LinearSales2 sales, _) => sales.sales2,
+        data: rain_F,
+      )..setAttribute(charts.rendererIdKey, 'customArea1'),
     ];
   }
 }
 
 /// Sample linear data type.
 class LinearSales {
-  final int year;
-  final int sales;
+  final double year;
+  final double sales;
 
   LinearSales(this.year, this.sales);
+}
+
+class LinearSales2 {
+  final double year2;
+  final double sales2;
+
+  LinearSales2(this.year2, this.sales2);
 }

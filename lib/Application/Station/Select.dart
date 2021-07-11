@@ -2,6 +2,7 @@ import 'package:dwr0001/Application/OverViewPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:dwr0001/Application/pdf/PdfViewer.dart';
 
 import '../MenuOld.dart';
 
@@ -89,13 +90,10 @@ class MyDisplayClass extends StatelessWidget {
               SizedBox(height: size.height * 0.03),
               GestureDetector(
                 onTap: () {
-                  if (basinID == 1) {
-                    launch("https://bit.ly/3huKEBj");
-                  } else if (basinID == 2) {
-                    launch("https://bit.ly/3ApFWxk");
-                  } else {
-                    launch("https://bit.ly/3AovhTG");
-                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PdfViewer(basinID)),
+                  );
                 },
                 child: Image(
                   image:

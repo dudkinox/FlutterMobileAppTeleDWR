@@ -106,11 +106,7 @@ class TabTwoStation extends StatelessWidget {
                                     basinID: basinID,
                                   )));
                     },
-                    onLongPress: () async {
-                      // print(
-                      //   Text("Long Pressed" + basinID),
-                      // );
-                    },
+                    onLongPress: () async {},
                   ),
                   new ListBody(
                     children: <Widget>[],
@@ -119,12 +115,7 @@ class TabTwoStation extends StatelessWidget {
               ),
             );
           }
-
-          ////print('Response JsonDecode: $station');
-          //return Text(station.length.toString());
-          ////Text("STN_ID: ${station.STN_ID}\nSTN_Name: ${station.STN_Name}\nCURR_Acc_Rain_1_D: ${station.CURR_Acc_Rain_1_D}\nCURR_Acc_Rain_12_H: ${station.CURR_Acc_Rain_12_H}\nCURR_Acc_Rain_15_M: ${station.CURR_Acc_Rain_15_M}\nCURR_Acc_Rain_30_M: ${station.CURR_Acc_Rain_30_M}\nCURR_Acc_Rain_60_M: ${station.CURR_Acc_Rain_60_M}\nCURR_FLOW: ${station.CURR_FLOW}\nCURR_Water_D_Level_MSL: ${station.CURR_Water_D_Level_MSL}\nCURR_Water_U_Level_MSL: ${station.CURR_Water_U_Level_MSL}\nLAST_UPDATE: ${station.LAST_UPDATE}\n ");
         } else if (snapshot.hasError) {
-          //print('snapshot.error: ${snapshot.error.toString()}');
           return Text(snapshot.error.toString());
         }
         return CircularProgressIndicator();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 
 // ignore: must_be_immutable
 class TabFour extends StatelessWidget {
@@ -22,14 +23,16 @@ class TabFour extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: FadeInImage.assetNetwork(
-                placeholder: 'assets/images/loading1.gif',
-                image: ('http://tele-maeklong.dwr.go.th/image/' +
-                    stnId +
-                    '/CCTV_image/Overview_1.jpg'),
-              ),
-            ),
+                padding: const EdgeInsets.all(8.0),
+                child: FullScreenWidget(
+                    child: ClipRRect(
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'assets/images/loading1.gif',
+                    image: ('http://tele-maeklong.dwr.go.th/image/' +
+                        stnId +
+                        '/CCTV_image/Overview_1.jpg'),
+                  ),
+                ))),
           ),
         ),
         Padding(
@@ -41,11 +44,16 @@ class TabFour extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: FadeInImage.assetNetwork(
-                placeholder: 'assets/images/loading1.gif',
-                image: ('http://tele-maeklong.dwr.go.th/image/' +
-                    stnId +
-                    '/CCTV_image/Staff_1.jpg'),
+              child: FullScreenWidget(
+                child: ClipRRect(
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'assets/images/loading1.gif',
+                    image: ('http://tele-maeklong.dwr.go.th/image/' +
+                        stnId +
+                        '/CCTV_image/Staff_1.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
           ),

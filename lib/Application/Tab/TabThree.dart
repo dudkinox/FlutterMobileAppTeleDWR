@@ -1,4 +1,3 @@
-import 'package:bezier_chart/bezier_chart.dart';
 import 'package:dwr0001/Models/data_Model.dart';
 import 'package:dwr0001/screen/welcome/welcome.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class TabThree extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final List<DataModelGet> data = snapshot.data;
-          return AreaAndLineChart.withSampleData();
+          return AreaAndLineChart.withSampleData(data);
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }

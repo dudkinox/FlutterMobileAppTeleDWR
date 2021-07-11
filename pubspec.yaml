@@ -25,7 +25,7 @@ dependencies:
     sdk: flutter
   photo_view: ^0.3.1
   cupertino_icons: ^1.0.2
-  http: ^0.13.1
+  http: ^0.12.0
   font_awesome_flutter: ^9.0.0
   fluttertoast: ^8.0.7
   bezier_chart: ^1.0.16
@@ -36,7 +36,9 @@ dependencies:
   flutter_session: ^0.1.1
   responsive_flutter: ^0.0.4
   charts_flutter: ^0.10.0
-
+  flutter_staggered_grid_view: ^0.4.0
+  full_screen_image: any
+  flutter_plugin_pdf_viewer: ^1.0.7
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -63,6 +65,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/pdf/mk/mk.pdf
+    - assets/pdf/kk/kk.pdf
+    - assets/pdf/sl/sl.pdf
     - assets/images/
     - images/bg.jpg
     - images/bg2.png
