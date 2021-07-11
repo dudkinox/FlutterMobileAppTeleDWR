@@ -27,15 +27,15 @@ class OverViewPage extends StatelessWidget {
 class MyDisplayClass extends StatelessWidget {
   MyDisplayClass(this.basinID);
   var basinID;
-  sentRiver(basinID);
   @override
   Widget build(BuildContext context) {
+    print(basinID);
     return Scaffold(
       appBar: AppBar(
         bottom: TabBar(
           tabs: [
             Tab(
-              icon: Icon(Icons.water),
+              icon: Icon(Icons.fmd_good_sharp),
               text: "ภาพรวมสถานี",
             ),
             Tab(

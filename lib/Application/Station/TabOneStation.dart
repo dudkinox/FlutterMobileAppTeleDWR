@@ -8,10 +8,11 @@ import '../StationPage.dart';
 
 // ignore: must_be_immutable
 class TabOneStation extends StatelessWidget {
-  TabOneStation(basinID);
+  TabOneStation(this.basinID);
   var basinID;
   @override
   Widget build(BuildContext context) {
+    print("Tab : " + basinID.toString());
     return FutureBuilder<List<StationModel>>(
       future: getStationListTab(basinID, "1"),
       builder: (context, snapshot) {

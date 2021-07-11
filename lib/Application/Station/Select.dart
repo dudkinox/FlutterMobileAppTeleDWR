@@ -26,6 +26,7 @@ class MyDisplayClass extends StatelessWidget {
   var basinID;
   @override
   Widget build(BuildContext context) {
+    print("สถานี" + basinID.toString());
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
