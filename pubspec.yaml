@@ -112,6 +112,7 @@ flutter:
     - assets/TabOne/climate.png
     - assets/TabOne/hailstorm_inv.png
     - assets/TabOne/hailstorm.png
+    - assets/TabOne/hailstorm_Gray.png
     - assets/TabOne/tide_inv.png
     - assets/TabOne/tide.png
     - assets/banner/bell/red.png
