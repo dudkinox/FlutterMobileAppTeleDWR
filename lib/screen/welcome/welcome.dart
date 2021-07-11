@@ -3,6 +3,7 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:dwr0001/Application/StationPage.dart';
 import 'package:dwr0001/Models/data_Model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 // ignore: must_be_immutable
 class AreaAndLineChart extends StatelessWidget {
@@ -27,6 +28,8 @@ class AreaAndLineChart extends StatelessWidget {
 
   final ScrollController _controllerOne = ScrollController();
 
+  get padding => null;
+
   @override
   Widget build(BuildContext context) {
     return Scrollbar(
@@ -40,18 +43,27 @@ class AreaAndLineChart extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Column(
             children: [
-              Text(
-                index == 0
-                    ? "กราฟแสดงปริมาณน้ำฝน (มม.)"
-                    : index == 1
-                        ? "กราฟแสดงระดับน้ำ (ม.รทก.)"
-                        : "กราฟแสดงปริมาณน้ำ (ลบม. / วินาที)",
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              SizedBox(
+                height: 20,
+              ),
+              Card(
+                child: Text(
+                  index == 0
+                      ? " กราฟแสดงปริมาณน้ำฝน (มม.) "
+                      : index == 1
+                          ? " กราฟแสดงระดับน้ำ (ม.รทก.) "
+                          : " กราฟแสดงปริมาณน้ำ (ลบม. / วินาที) ",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
+                ),
               ),
               Flexible(
                 flex: 2,
-                child: Center(
+                child: Card(
+                  margin: EdgeInsets.zero,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
                   child: new charts.LineChart(
                     index == 0
                         ? seriesList
@@ -75,6 +87,11 @@ class AreaAndLineChart extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildImageCard(int index) => Card(
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      );
 
   /// Create one series with sample hard coded data.
   static List<charts.Series<LinearSales, double>> _createSampleData(var data) {

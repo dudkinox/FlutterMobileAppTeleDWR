@@ -145,6 +145,13 @@ class TabOne extends StatelessWidget {
                                       width: deviceWidth * 0.35,
                                       padding: EdgeInsets.all(10.0),
                                       decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Colors.white,
+                                              Colors.blue[500]
+                                            ]),
                                         boxShadow: [
                                           BoxShadow(
                                             color:
@@ -168,6 +175,12 @@ class TabOne extends StatelessWidget {
                                                 width: size.width * 0.1,
                                               ),
                                               Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color: Colors.white
+                                                      .withOpacity(0.3),
+                                                ),
                                                 padding: EdgeInsets.all(10.0),
                                                 alignment: Alignment.topRight,
                                                 child: Column(
@@ -192,8 +205,7 @@ class TabOne extends StatelessWidget {
                                                                       .of(
                                                                           context)
                                                                   .fontSize(4),
-                                                          color:
-                                                              Colors.blue[900],
+                                                          color: Colors.white,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontFamily:
@@ -219,7 +231,7 @@ class TabOne extends StatelessWidget {
                                                                       .of(
                                                                           context)
                                                                   .fontSize(2),
-                                                          color: Colors.blue,
+                                                          color: Colors.white,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontFamily:
@@ -248,7 +260,7 @@ class TabOne extends StatelessWidget {
                                                                         context)
                                                                     .fontSize(
                                                                         2),
-                                                            color: Colors.blue,
+                                                            color: Colors.white,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontFamily:
@@ -285,6 +297,13 @@ class TabOne extends StatelessWidget {
                                             width: deviceWidth * 0.25,
                                             padding: EdgeInsets.all(10.0),
                                             decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Colors.white,
+                                                    Colors.blue[500]
+                                                  ]),
                                               boxShadow: [
                                                 BoxShadow(
                                                   color: Colors.black
@@ -306,96 +325,118 @@ class TabOne extends StatelessWidget {
                                                   width: size.width * 0.1,
                                                 ),
                                                 Container(
+                                                    padding:
+                                                        EdgeInsets.all(5.0),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      color: Colors.white
+                                                          .withOpacity(0.3),
+                                                    ),
                                                     child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.end,
-                                                  children: [
-                                                    Text(
-                                                      station
-                                                          .CURR_Acc_Rain_30_M,
-                                                      style: TextStyle(
-                                                          shadows: [
-                                                            Shadow(
-                                                              blurRadius: 4.0,
-                                                              color: Colors
-                                                                  .black87,
-                                                              offset: Offset(
-                                                                  2.0, 2.0),
-                                                            ),
-                                                          ],
-                                                          fontSize:
-                                                              ResponsiveFlutter
-                                                                      .of(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .end,
+                                                      children: [
+                                                        Text(
+                                                          station
+                                                              .CURR_Acc_Rain_30_M,
+                                                          style: TextStyle(
+                                                              shadows: [
+                                                                Shadow(
+                                                                  blurRadius:
+                                                                      4.0,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  offset:
+                                                                      Offset(
+                                                                          2.0,
+                                                                          2.0),
+                                                                ),
+                                                              ],
+                                                              fontSize:
+                                                                  ResponsiveFlutter.of(
                                                                           context)
-                                                                  .fontSize(3),
-                                                          color:
-                                                              Colors.blue[900],
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              'Righteous',
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none),
-                                                    ),
-                                                    Text(
-                                                      " mm.",
-                                                      style: TextStyle(
-                                                          shadows: [
-                                                            Shadow(
-                                                              blurRadius: 0,
-                                                              color: Colors
-                                                                  .black87,
-                                                              offset: Offset(
-                                                                  1.0, 1.0),
-                                                            ),
-                                                          ],
-                                                          fontSize:
-                                                              ResponsiveFlutter
-                                                                      .of(
+                                                                      .fontSize(
+                                                                          3),
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontFamily:
+                                                                  'Righteous',
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none),
+                                                        ),
+                                                        Text(
+                                                          " mm.",
+                                                          style: TextStyle(
+                                                              shadows: [
+                                                                Shadow(
+                                                                  blurRadius: 0,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  offset:
+                                                                      Offset(
+                                                                          1.0,
+                                                                          1.0),
+                                                                ),
+                                                              ],
+                                                              fontSize:
+                                                                  ResponsiveFlutter.of(
                                                                           context)
-                                                                  .fontSize(2),
-                                                          color: Colors.blue,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              'Righteous',
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none),
-                                                    ),
-                                                    Container(
-                                                      alignment:
-                                                          Alignment.center,
-                                                      child: Text(
-                                                        "30 นาที",
-                                                        style: TextStyle(
-                                                            shadows: [
-                                                              Shadow(
-                                                                blurRadius: 0,
-                                                                color: Colors
-                                                                    .black87,
-                                                                offset: Offset(
-                                                                    1.0, 1.0),
-                                                              ),
-                                                            ],
-                                                            fontSize:
-                                                                ResponsiveFlutter.of(
+                                                                      .fontSize(
+                                                                          2),
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontFamily:
+                                                                  'Righteous',
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none),
+                                                        ),
+                                                        Container(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          child: Text(
+                                                            "30 นาที",
+                                                            style: TextStyle(
+                                                                shadows: [
+                                                                  Shadow(
+                                                                    blurRadius:
+                                                                        0,
+                                                                    color: Colors
+                                                                        .black87,
+                                                                    offset:
+                                                                        Offset(
+                                                                            1.0,
+                                                                            1.0),
+                                                                  ),
+                                                                ],
+                                                                fontSize: ResponsiveFlutter.of(
                                                                         context)
                                                                     .fontSize(
                                                                         2),
-                                                            color: Colors.blue,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontFamily:
-                                                                'Righteous',
-                                                            decoration:
-                                                                TextDecoration
-                                                                    .none),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ))
+                                                                color: Colors
+                                                                    .white,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontFamily:
+                                                                    'Righteous',
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .none),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ))
                                               ],
                                             ),
                                           ),
@@ -404,6 +445,13 @@ class TabOne extends StatelessWidget {
                                             width: deviceWidth * 0.25,
                                             padding: EdgeInsets.all(10.0),
                                             decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Colors.white,
+                                                    Colors.blue[500]
+                                                  ]),
                                               boxShadow: [
                                                 BoxShadow(
                                                   color: Colors.black
@@ -425,6 +473,14 @@ class TabOne extends StatelessWidget {
                                                   width: size.width * 0.1,
                                                 ),
                                                 Container(
+                                                  padding: EdgeInsets.all(5.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    color: Colors.white
+                                                        .withOpacity(0.3),
+                                                  ),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment.end,
@@ -443,13 +499,11 @@ class TabOne extends StatelessWidget {
                                                               ),
                                                             ],
                                                             fontSize:
-                                                                ResponsiveFlutter
-                                                                        .of(
-                                                                            context)
+                                                                ResponsiveFlutter.of(
+                                                                        context)
                                                                     .fontSize(
                                                                         3),
-                                                            color: Colors
-                                                                .blue[900],
+                                                            color: Colors.white,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontFamily:
@@ -475,7 +529,7 @@ class TabOne extends StatelessWidget {
                                                                         context)
                                                                     .fontSize(
                                                                         2),
-                                                            color: Colors.blue,
+                                                            color: Colors.white,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontFamily:
@@ -507,7 +561,7 @@ class TabOne extends StatelessWidget {
                                                                       .fontSize(
                                                                           2),
                                                               color:
-                                                                  Colors.blue,
+                                                                  Colors.white,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -529,6 +583,13 @@ class TabOne extends StatelessWidget {
                                             width: deviceWidth * 0.25,
                                             padding: EdgeInsets.all(10.0),
                                             decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Colors.white,
+                                                    Colors.blue[500]
+                                                  ]),
                                               boxShadow: [
                                                 BoxShadow(
                                                   color: Colors.black
@@ -550,6 +611,14 @@ class TabOne extends StatelessWidget {
                                                   width: size.width * 0.1,
                                                 ),
                                                 Container(
+                                                  padding: EdgeInsets.all(5.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    color: Colors.white
+                                                        .withOpacity(0.3),
+                                                  ),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment.end,
@@ -568,13 +637,11 @@ class TabOne extends StatelessWidget {
                                                               ),
                                                             ],
                                                             fontSize:
-                                                                ResponsiveFlutter
-                                                                        .of(
-                                                                            context)
+                                                                ResponsiveFlutter.of(
+                                                                        context)
                                                                     .fontSize(
                                                                         3),
-                                                            color: Colors
-                                                                .blue[900],
+                                                            color: Colors.white,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontFamily:
@@ -600,7 +667,7 @@ class TabOne extends StatelessWidget {
                                                                         context)
                                                                     .fontSize(
                                                                         2),
-                                                            color: Colors.blue,
+                                                            color: Colors.white,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontFamily:
@@ -632,7 +699,7 @@ class TabOne extends StatelessWidget {
                                                                       .fontSize(
                                                                           2),
                                                               color:
-                                                                  Colors.blue,
+                                                                  Colors.white,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -683,6 +750,13 @@ class TabOne extends StatelessWidget {
                                       Container(
                                         padding: EdgeInsets.all(5.0),
                                         decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Colors.white,
+                                                Colors.blue[500]
+                                              ]),
                                           boxShadow: [
                                             BoxShadow(
                                               color:
@@ -707,53 +781,85 @@ class TabOne extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.end,
                                               children: [
-                                                Text(
-                                                  station.WL == ""
-                                                      ? "-"
-                                                      : station
-                                                          .CURR_Water_D_Level_MSL,
-                                                  style: TextStyle(
-                                                      shadows: [
-                                                        Shadow(
-                                                          blurRadius: 4.0,
-                                                          color: Colors.black87,
-                                                          offset:
-                                                              Offset(2.0, 2.0),
+                                                Container(
+                                                    padding:
+                                                        EdgeInsets.all(5.0),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      color: Colors.white
+                                                          .withOpacity(0.3),
+                                                    ),
+                                                    child: Column(
+                                                      children: [
+                                                        Text(
+                                                          station.WL == ""
+                                                              ? "-"
+                                                              : station
+                                                                  .CURR_Water_D_Level_MSL,
+                                                          style: TextStyle(
+                                                              shadows: [
+                                                                Shadow(
+                                                                  blurRadius:
+                                                                      4.0,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  offset:
+                                                                      Offset(
+                                                                          2.0,
+                                                                          2.0),
+                                                                ),
+                                                              ],
+                                                              fontSize:
+                                                                  ResponsiveFlutter.of(
+                                                                          context)
+                                                                      .fontSize(
+                                                                          2.5),
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontFamily:
+                                                                  'Righteous',
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none),
+                                                        ),
+                                                        Text(
+                                                          "ม.รทก.",
+                                                          style: TextStyle(
+                                                              shadows: [
+                                                                Shadow(
+                                                                  blurRadius:
+                                                                      4.0,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  offset:
+                                                                      Offset(
+                                                                          2.0,
+                                                                          2.0),
+                                                                ),
+                                                              ],
+                                                              fontSize:
+                                                                  ResponsiveFlutter.of(
+                                                                          context)
+                                                                      .fontSize(
+                                                                          2),
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontFamily:
+                                                                  'Righteous',
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none),
                                                         ),
                                                       ],
-                                                      fontSize:
-                                                          ResponsiveFlutter.of(
-                                                                  context)
-                                                              .fontSize(3),
-                                                      color: Colors.blue[900],
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontFamily: 'Righteous',
-                                                      decoration:
-                                                          TextDecoration.none),
-                                                ),
-                                                Text(
-                                                  "ม.รทก.",
-                                                  style: TextStyle(
-                                                      shadows: [
-                                                        Shadow(
-                                                          blurRadius: 4.0,
-                                                          color: Colors.black87,
-                                                          offset:
-                                                              Offset(2.0, 2.0),
-                                                        ),
-                                                      ],
-                                                      fontSize:
-                                                          ResponsiveFlutter.of(
-                                                                  context)
-                                                              .fontSize(2),
-                                                      color: Colors.blue[900],
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontFamily: 'Righteous',
-                                                      decoration:
-                                                          TextDecoration.none),
-                                                ),
+                                                    ))
                                               ],
                                             )
                                           ],
@@ -784,6 +890,13 @@ class TabOne extends StatelessWidget {
                                       Container(
                                           padding: EdgeInsets.all(5.0),
                                           decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Colors.white,
+                                                  Colors.blue[500]
+                                                ]),
                                             boxShadow: [
                                               BoxShadow(
                                                 color: Colors.black
@@ -808,54 +921,80 @@ class TabOne extends StatelessWidget {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.end,
                                                 children: [
-                                                  Text(
-                                                    station.CURR_FLOW,
-                                                    style: TextStyle(
-                                                        shadows: [
-                                                          Shadow(
-                                                            blurRadius: 4.0,
-                                                            color:
-                                                                Colors.black87,
-                                                            offset: Offset(
-                                                                2.0, 2.0),
+                                                  Container(
+                                                      padding:
+                                                          EdgeInsets.all(5.0),
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        color: Colors.white
+                                                            .withOpacity(0.3),
+                                                      ),
+                                                      child: Column(
+                                                        children: [
+                                                          Text(
+                                                            station.CURR_FLOW,
+                                                            style: TextStyle(
+                                                                shadows: [
+                                                                  Shadow(
+                                                                    blurRadius:
+                                                                        4.0,
+                                                                    color: Colors
+                                                                        .black87,
+                                                                    offset:
+                                                                        Offset(
+                                                                            2.0,
+                                                                            2.0),
+                                                                  ),
+                                                                ],
+                                                                fontSize: ResponsiveFlutter.of(
+                                                                        context)
+                                                                    .fontSize(
+                                                                        2.5),
+                                                                color: Colors
+                                                                    .white,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontFamily:
+                                                                    'Righteous',
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .none),
+                                                          ),
+                                                          Text(
+                                                            "ม.รทก.",
+                                                            style: TextStyle(
+                                                                shadows: [
+                                                                  Shadow(
+                                                                    blurRadius:
+                                                                        4.0,
+                                                                    color: Colors
+                                                                        .black87,
+                                                                    offset:
+                                                                        Offset(
+                                                                            2.0,
+                                                                            2.0),
+                                                                  ),
+                                                                ],
+                                                                fontSize: ResponsiveFlutter.of(
+                                                                        context)
+                                                                    .fontSize(
+                                                                        2),
+                                                                color: Colors
+                                                                    .white,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontFamily:
+                                                                    'Righteous',
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .none),
                                                           ),
                                                         ],
-                                                        fontSize:
-                                                            ResponsiveFlutter
-                                                                    .of(context)
-                                                                .fontSize(3),
-                                                        color: Colors.blue[900],
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontFamily: 'Righteous',
-                                                        decoration:
-                                                            TextDecoration
-                                                                .none),
-                                                  ),
-                                                  Text(
-                                                    "ม.รทก.",
-                                                    style: TextStyle(
-                                                        shadows: [
-                                                          Shadow(
-                                                            blurRadius: 4.0,
-                                                            color:
-                                                                Colors.black87,
-                                                            offset: Offset(
-                                                                2.0, 2.0),
-                                                          ),
-                                                        ],
-                                                        fontSize:
-                                                            ResponsiveFlutter
-                                                                    .of(context)
-                                                                .fontSize(2),
-                                                        color: Colors.blue[900],
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontFamily: 'Righteous',
-                                                        decoration:
-                                                            TextDecoration
-                                                                .none),
-                                                  ),
+                                                      ))
                                                 ],
                                               )
                                             ],
