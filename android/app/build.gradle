@@ -43,7 +43,7 @@ def keystoreProperties = new Properties()
         applicationId "com.teledwrapp.app"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode flutterVersionCode.toInteger()
+        versionCode 2
         versionName flutterVersionName
     }
 
