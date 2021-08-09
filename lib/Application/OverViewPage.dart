@@ -35,7 +35,7 @@ class MyDisplayClass extends StatelessWidget {
         bottom: TabBar(
           tabs: [
             Tab(
-              icon: Icon(Icons.fmd_good_sharp),
+              icon: Icon(Icons.star_border),
               text: "ภาพรวมสถานี",
             ),
             Tab(
@@ -73,7 +73,7 @@ class MyDisplayClass extends StatelessWidget {
 
 Future<StationModel> getStation() async {
   final String url =
-      "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json_id?stn_id=TC140805";
+      "https://tele-maeklong.dwr.go.th/webservice/webservice_mk_json_id?stn_id=TC140805";
   //final String url = "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
@@ -99,6 +99,8 @@ List<StationModel> parseStation(String responseBody, String tab) {
       break;
     case "2":
       parsed = json.decode(responseBody);
+      //https://stackoverflow.com/questions/42143031/filter-json-by-key-value/42143070
+      //(status["CURR_STATUS"] == "1" || status["CURR_STATUS"] == "2"));
       var result = parsed.where((status) =>
           (status["CURR_STATUS"] == "1" || status["CURR_STATUS"] == "2"));
       return result
@@ -114,12 +116,12 @@ List<StationModel> parseStation(String responseBody, String tab) {
 Future<List<StationModel>> getStationListTab(var basinId, var tab) async {
   //final response = await http.get('http://192.168.1.2:8000/products.json');
   final String url = basinId == 1
-      ? "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json"
+      ? "https://tele-maeklong.dwr.go.th/webservice/webservice_mk_json"
       : basinId == 2
-          ? "http://tele-salawin.dwr.go.th/webservice/webservice_sl_json"
+          ? "https://tele-salawin.dwr.go.th/webservice/webservice_sl_json"
           : basinId == 3
-              ? "http://tele-kokkhong.dwr.go.th/webservice/webservice_kk_json"
-              : "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
+              ? "https://tele-kokkhong.dwr.go.th/webservice/webservice_kk_json"
+              : "https://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
     return parseStation(response.body, tab);

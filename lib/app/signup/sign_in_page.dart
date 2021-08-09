@@ -35,7 +35,7 @@ class SignInPage extends StatelessWidget {
               ),
               // FadeInImage.assetNetwork(
               //   // placeholder: 'images/loading2.gif',
-              //   image: ('http://tele-maeklong.dwr.go.th/image/Logodwr_r.png'),
+              //   image: ('https://tele-maeklong.dwr.go.th/image/Logodwr_r.png'),
               // ),
               SizedBox(
                 height: 7.0,
@@ -99,10 +99,10 @@ class SignInPage extends StatelessWidget {
           ),
           FadeInImage.assetNetwork(
             placeholder: 'image/loading1.gif',
-            image: ('http://tele-maeklong.dwr.go.th/image/Logodwr_r.png'),
+            image: ('https://tele-maeklong.dwr.go.th/image/Logodwr_r.png'),
           ),
           Image.network(
-            'http://tele-maeklong.dwr.go.th/image/Logodwr_r.png',
+            'https://tele-maeklong.dwr.go.th/image/Logodwr_r.png',
             width: 150.0,
             height: 211,
           ),

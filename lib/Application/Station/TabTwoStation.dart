@@ -8,7 +8,7 @@ import '../StationPage.dart';
 
 // ignore: must_be_immutable
 class TabTwoStation extends StatelessWidget {
-  TabTwoStation(basinID);
+  TabTwoStation(this.basinID);
   var basinID;
   @override
   Widget build(BuildContext context) {

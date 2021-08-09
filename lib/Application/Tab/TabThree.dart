@@ -13,8 +13,10 @@ class TabThree extends StatelessWidget {
     return FutureBuilder<List<DataModelGet>>(
       future: getStationData24H(stnId),
       builder: (context, snapshot) {
+        print("here");
         if (snapshot.hasData) {
           final List<DataModelGet> data = snapshot.data;
+          print(data);
           return AreaAndLineChart.withSampleData(data);
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());

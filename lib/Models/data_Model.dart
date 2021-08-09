@@ -52,7 +52,7 @@ class DataModelGet {
       Label: json['Label'],
       Rain_15_M: json['Rain'],
       Water_D: json['Water'],
-      Water_F: json['FLOW'],
+      Water_F: json['Flow'],
     );
   }
 }

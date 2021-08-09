@@ -57,7 +57,7 @@ class MyDisplayClass extends StatelessWidget {
                   height: 100,
                 ),
               ),
-              SizedBox(height: size.height * 0.03),
+              SizedBox(height: size.height * 0.01),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -72,7 +72,7 @@ class MyDisplayClass extends StatelessWidget {
                   height: 85,
                 ),
               ),
-              SizedBox(height: size.height * 0.03),
+              SizedBox(height: size.height * 0.01),
               GestureDetector(
                 onTap: () {
                   if (basinID == 3) {
@@ -88,7 +88,7 @@ class MyDisplayClass extends StatelessWidget {
                   height: 85,
                 ),
               ),
-              SizedBox(height: size.height * 0.03),
+              SizedBox(height: size.height * 0.01),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -103,7 +103,7 @@ class MyDisplayClass extends StatelessWidget {
                   height: 85,
                 ),
               ),
-              SizedBox(height: size.height * 0.13),
+              SizedBox(height: size.height * 0.10),
               GestureDetector(
                 onTap: () {
                   Navigator.push(

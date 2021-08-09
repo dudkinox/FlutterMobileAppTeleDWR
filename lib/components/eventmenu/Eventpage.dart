@@ -5,7 +5,6 @@ import 'package:flutter/rendering.dart';
 import '../river/River.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class EventPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -111,7 +110,7 @@ class EventPage extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      launch("http://tele-maeklong.dwr.go.th/");
+                      launch("https://tele-maeklong.dwr.go.th/");
                     },
                   ),
                   SizedBox(height: 10),
@@ -194,4 +193,3 @@ class EventPage extends StatelessWidget {
     );
   }
 }
-

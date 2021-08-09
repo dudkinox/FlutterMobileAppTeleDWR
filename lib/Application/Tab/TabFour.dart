@@ -3,10 +3,44 @@ import 'package:full_screen_image/full_screen_image.dart';
 
 // ignore: must_be_immutable
 class TabFour extends StatelessWidget {
-  TabFour(this.stnId);
+  TabFour(this.stnId, this.basinId, this.CCTV);
   var stnId;
+  var basinId;
+  var CCTV;
+  var basinName;
   @override
   Widget build(BuildContext context) {
+    basinName = basinId == 1
+        ? "maeklong"
+        : basinId == 2
+            ? "salawin"
+            : basinId == 3
+                ? "kokkhong"
+                : "kokkhong";
+    // if (basinId == 1) {
+    //   basinName = 'maeklong';
+    // }
+    // if (basinId == 2) {
+    //   basinName = 'salawin';
+    // }
+
+    // if (basinId == 3) {
+    //   basinName = 'kokkhong';
+    // }
+
+    if (CCTV == "") {
+      return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(children: <Widget>[
+            Text(
+              "สถานีนี้ไม่มีข้อมูล CCTV",
+              textAlign: TextAlign.center,
+              style:
+                  TextStyle(fontFamily: 'Kanit', fontWeight: FontWeight.normal),
+            )
+          ]));
+    }
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListView(children: <Widget>[
@@ -28,7 +62,9 @@ class TabFour extends StatelessWidget {
                     child: ClipRRect(
                   child: FadeInImage.assetNetwork(
                     placeholder: 'assets/images/loading1.gif',
-                    image: ('http://tele-maeklong.dwr.go.th/image/' +
+                    image: ('https://tele-' +
+                        basinName +
+                        '.dwr.go.th/image/' +
                         stnId +
                         '/CCTV_image/Overview_1.jpg'),
                   ),
@@ -48,7 +84,9 @@ class TabFour extends StatelessWidget {
                 child: ClipRRect(
                   child: FadeInImage.assetNetwork(
                     placeholder: 'assets/images/loading1.gif',
-                    image: ('http://tele-maeklong.dwr.go.th/image/' +
+                    image: ('https://tele-' +
+                        basinName +
+                        '.dwr.go.th/image/' +
                         stnId +
                         '/CCTV_image/Staff_1.jpg'),
                     fit: BoxFit.cover,

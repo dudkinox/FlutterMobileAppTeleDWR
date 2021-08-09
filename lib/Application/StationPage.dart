@@ -15,9 +15,12 @@ class StationPage extends StatelessWidget {
   // ignore: non_constant_identifier_names
   final String stn_id;
   final int basinID;
+  final String RF;
+  final String WL;
+  final String CCTV;
   // ignore: non_constant_identifier_names
   // StationPage({Key key, @required this.stn_id, this.basinID}) : super(key: key);
-  StationPage({this.stn_id, this.basinID});
+  StationPage({this.stn_id, this.basinID, this.RF, this.WL, this.CCTV});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class StationPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 4,
-        child: MyDisplayClass(stn_id, basinID),
+        child: MyDisplayClass(stn_id, basinID, RF, WL, CCTV),
       ),
     );
   }
@@ -33,9 +36,12 @@ class StationPage extends StatelessWidget {
 
 // ignore: must_be_immutable
 class MyDisplayClass extends StatelessWidget {
-  MyDisplayClass(this.stnId, this.basinID);
+  MyDisplayClass(this.stnId, this.basinID, this.RF, this.WL, this.CCTV);
   var stnId;
   var basinID;
+  var RF;
+  var WL;
+  var CCTV;
   StationModel stationData;
   String _title = 'ข้อมูลตรวจวัด';
   // ignore: non_constant_identifier_names
@@ -64,19 +70,43 @@ class MyDisplayClass extends StatelessWidget {
           tabs: [
             Tab(
               icon: Icon(Icons.pending_actions_sharp),
-              text: "สถานี",
+              child: Text(
+                "สถานี",
+                style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.normal),
+              ),
             ),
             Tab(
               icon: Icon(Icons.table_rows_outlined),
-              text: "ตาราง",
+              child: Text(
+                "ตาราง",
+                style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.normal),
+              ),
             ),
             Tab(
               icon: Icon(Icons.bar_chart_outlined),
-              text: "กราฟ",
+              child: Text(
+                "กราฟ",
+                style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.normal),
+              ),
             ),
             Tab(
               icon: Icon(Icons.camera),
-              text: "CCTV",
+              child: Text(
+                "CCTV",
+                style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.normal),
+              ),
             ),
           ],
         ),
@@ -143,7 +173,7 @@ class MyDisplayClass extends StatelessWidget {
                   return stationPage;
                 }));
               },
-              child: TabFour(stnId),
+              child: TabFour(stnId, basinID, CCTV),
             ),
           ],
         ),
@@ -154,10 +184,10 @@ class MyDisplayClass extends StatelessWidget {
 
 Future<StationModel> getStation(String stn_id) async {
   final String url =
-      "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json_id?stn_id=" +
+      "https://tele-maeklong.dwr.go.th/webservice/webservice_mk_json_id?stn_id=" +
           stn_id;
 
-  //final String url = "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
+  //final String url = "https://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final response = await http.get(Uri.parse(url));
@@ -179,7 +209,7 @@ List<StationModel> parseStation(String responseBody) {
 Future<List<StationModel>> getStationList(basinID, String s) async {
   //final response = await http.get('http://192.168.1.2:8000/products.json');
   final String url =
-      "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
+      "https://tele-maeklong.dwr.go.th/webservice/webservice_mk_json";
   final response = await http.get(Uri.parse(url));
   if (response.statusCode == 200) {
     return parseStation(response.body);
@@ -201,7 +231,7 @@ List<StationModel> parseData(String responseBody) {
 Future<StationModel> getStationData(String stn_id) async {
   //final String url ="http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json?stn_id=" + stn_id;
   final String url =
-      "http://tele-maeklong.dwr.go.th/webservice/webservice_mk_Data_json?stn_id=" +
+      "https://tele-maeklong.dwr.go.th/webservice/webservice_mk_Data_json?stn_id=" +
           stn_id;
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
@@ -225,7 +255,7 @@ List<DataModelGet> parseData_(String responseBody) {
 Future<List<DataModelGet>> getStationData24H(String stn_id) async {
   //final String url ="http://tele-maeklong.dwr.go.th/webservice/webservice_mk_json?stn_id=" + stn_id;
   final String url =
-      "http://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" + stn_id;
+      "https://tele-kokkhong.dwr.go.th/webservice/getdata?station_ID=" + stn_id;
   //https://localhost:44303/webservice/webservice_mk_json_id?stn_id=TC140805
   //final String url = "https://jsonplaceholder.typicode.com/todos/1";
   final response = await http.get(Uri.parse(url));

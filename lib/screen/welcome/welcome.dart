@@ -4,6 +4,7 @@ import 'package:dwr0001/Application/StationPage.dart';
 import 'package:dwr0001/Models/data_Model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 // ignore: must_be_immutable
 class AreaAndLineChart extends StatelessWidget {
@@ -47,15 +48,18 @@ class AreaAndLineChart extends StatelessWidget {
                 height: 20,
               ),
               Card(
-                color: Colors.blue[100],
+                color: Colors.blue[200],
                 child: Text(
                   index == 0
                       ? " กราฟแสดงปริมาณน้ำฝน (มม.) "
                       : index == 1
-                          ? " กราฟแสดงระดับน้ำ (ม.รทก.) "
-                          : " กราฟแสดงปริมาณน้ำ (ลบม. / วินาที) ",
+                          ? " กราฟแสดงระดับน้ำ (ม.รทก.)/ปริมาณน้ำ (ลบม. ต่อ วินาที) "
+                          : " กราฟแสดงปริมาณน้ำ (ลบ.ม. / วินาที) ",
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 20),
+                    fontWeight: FontWeight.normal,
+                    fontSize: (13),
+                    fontFamily: 'Kanit',
+                  ),
                 ),
               ),
               Flexible(
@@ -66,20 +70,23 @@ class AreaAndLineChart extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: new charts.LineChart(
-                    index == 0
-                        ? seriesList
-                        : index == 1
-                            ? seriesList2
-                            : "",
-                    animate: animate,
-                    customSeriesRenderers: [
-                      new charts.LineRendererConfig(
-                          // ID used to link series to this renderer.
-                          customRendererId: 'customArea' + index.toString(),
-                          includeArea: true,
-                          stacked: true),
-                    ],
+                  child: Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: new charts.LineChart(
+                      index == 0
+                          ? seriesList
+                          : index == 1
+                              ? seriesList2
+                              : "",
+                      animate: animate,
+                      customSeriesRenderers: [
+                        new charts.LineRendererConfig(
+                            // ID used to link series to this renderer.
+                            customRendererId: 'customArea' + index.toString(),
+                            includeArea: true,
+                            stacked: true),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -100,6 +107,7 @@ class AreaAndLineChart extends StatelessWidget {
     // ignore: deprecated_member_use
     List<LinearSales> rain = new List<LinearSales>(data.length);
     for (var i = 0; i < data.length; i++) {
+      print(data[i].Rain_15_M);
       rain[i] = new LinearSales(
           double.parse(i.toString()), double.parse(data[i].Rain_15_M));
     }
@@ -124,16 +132,24 @@ class AreaAndLineChart extends StatelessWidget {
     // ignore: deprecated_member_use
     List<LinearSales2> rain_D = new List<LinearSales2>(number);
     for (var i = 0; i < number; i++) {
+      print(data[i].Water_D);
       rain_D[i] = new LinearSales2(
           double.parse(i.toString()), double.parse(data[i].Water_D));
     }
     // ignore: deprecated_member_use
+    List<LinearSales3> rain_D3 = new List<LinearSales3>(number);
+    for (var i = 0; i < number; i++) {
+      print(data[i].Water_D);
+      rain_D3[i] =
+          new LinearSales3(data[i].Label, double.parse(data[i].Water_D));
+    }
+    // ignore: deprecated_member_use
     List<LinearSales2> rain_F = new List<LinearSales2>(number);
     for (var j = 0; j < number; j++) {
-      rain_F[j] = new LinearSales2(double.parse(j.toString()),
-          double.parse(data[j].Water_F == null ? "0.0" : ""));
+      print(data[j].Water_F);
+      rain_F[j] = new LinearSales2(
+          double.parse(j.toString()), double.parse(data[j].Water_F));
     }
-
     return [
       new charts.Series<LinearSales2, double>(
         id: 'Desktop',
@@ -167,4 +183,11 @@ class LinearSales2 {
   final double sales2;
 
   LinearSales2(this.year2, this.sales2);
+}
+
+class LinearSales3 {
+  final String year3;
+  final double sales3;
+
+  LinearSales3(this.year3, this.sales3);
 }
